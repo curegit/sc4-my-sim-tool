@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 
 namespace SC4MySimTool
@@ -7,32 +8,125 @@ namespace SC4MySimTool
 	{
 		private static int Main(string[] args)
 		{
-			string command = args.Length > 0 ? args[0] : "help";
 			try
 			{
-				switch (command)
+				if (args.Length > 0)
 				{
-					case "help":
-					default:
-						ShowHelp();
-						break;
-					case "add":
-						AddMySim(args.Skip(1).ToArray());
-						break;
-					case "remove":
-						RemoveMySim(args.Skip(1).ToArray());
-						break;
-					case "show":
-						ShowMySims();
-						break;
+					switch (args[0])
+					{
+						case "help":
+							ShowHelp();
+							break;
+						case "add":
+							AddMySim(args.Skip(1).ToArray());
+							break;
+						case "remove":
+							RemoveMySim(args.Skip(1).ToArray());
+							break;
+						case "show":
+							ShowMySims();
+							break;
+						default:
+							if (File.Exists(args[0])) ReadFromStandardIO(args[0]);
+							else ShowHelp();
+							break;
+					}
 				}
+				else
+				{
+					ReadFromStandardIO();
+				}
+				Console.WriteLine("The operation was completed successfully.");
+				Console.WriteLine("Press any key to quit.");
+				Console.ReadKey();
 				return 0;
 			}
 			catch (Exception e)
 			{
 				Console.Write("Exception occurred: ");
 				Console.WriteLine(e.Message);
+				Console.WriteLine("Press any key to quit.");
+				Console.ReadKey();
 				return -1;
+			}
+		}
+
+		private static void ReadFromStandardIO(string imageFilepath = null)
+		{
+			while (true)
+			{
+				string command;
+				if (imageFilepath == null)
+				{
+					Console.WriteLine("Type 'add', 'remove', 'show', or 'help'.");
+					command = Console.ReadLine();
+				}
+				else
+				{
+					command = "add";
+				}
+				switch (command)
+				{
+					case "add":
+NameEntry:
+						Console.WriteLine("Enter a name of a new Sim.");
+						var newName = Console.ReadLine();
+						if (newName == "") goto NameEntry;
+GenderEntry:
+						Console.WriteLine("Enter gender of the Sim. Type 'male' or 'female'.");
+						var gender = Console.ReadLine();
+						try
+						{
+							ParseGender(gender);
+						}
+						catch
+						{
+							goto GenderEntry;
+						}
+SignEntry:
+						Console.WriteLine("Enter sign of the Sim. Type 'aquarius', 'aries', 'cancer', 'capricorn', 'gemini', 'leo', 'libra', 'pisces', 'sagittarius', 'scorpio', 'taurus', or 'virgo'.");
+						var sign = Console.ReadLine();
+						try
+						{
+							ParseZodiacSign(sign);
+						}
+						catch
+						{
+							goto SignEntry;
+						}
+ImageFileEntry:
+						if (imageFilepath != null)
+						{
+							AddMySim(new string[] { newName, gender, sign, imageFilepath });
+							break;
+						}
+						Console.WriteLine("Enter filepath of a image of the Sim.");
+						var filepath = Console.ReadLine();
+						if (filepath == "") goto ImageFileEntry;
+						AddMySim(new string[] { newName, gender, sign, filepath });
+						break;
+					case "remove":
+						while (true)
+						{
+							Console.WriteLine("Type the name of a Sim you want to remove.");
+							var name = Console.ReadLine();
+							if (name != "")
+							{
+								RemoveMySim(new string[] { name });
+								break;
+							}
+						}
+						break;
+					case "show":
+						ShowMySims();
+						break;
+					case "help":
+						ShowHelp();
+						break;
+					default:
+						continue;
+				}
+				break;
 			}
 		}
 
