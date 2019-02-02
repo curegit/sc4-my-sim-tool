@@ -58,7 +58,7 @@ namespace SC4MySimTool
 			}
 			catch (IOException)
 			{
-				throw new IOException("Can't save a image file. ");
+				throw new IOException("Can't save a image file. A Sim with the same name may already exist.");
 			}
 		}
 
