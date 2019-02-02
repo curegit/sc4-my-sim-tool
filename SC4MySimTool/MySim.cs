@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -21,7 +22,7 @@ namespace SC4MySimTool
 
 		public MySim(string name, Gender gender, ZodiacSign zodiacSign, string imageFilePath)
 		{
-			Name = name ?? throw new ArgumentNullException();
+			Name = name ?? throw new ArgumentNullException("'name' is required.");
 			Gender = gender;
 			ZodiacSign = zodiacSign;
 			Bitmap = ImportImage(imageFilePath);
@@ -31,12 +32,12 @@ namespace SC4MySimTool
 		public byte[] Encode()
 		{
 			var nameBytes = GetUTF8(Name);
-			if (nameBytes.Length > 255) throw new Exception(); 
+			if (nameBytes.Length > 255) throw new Exception("The name is too long.");
 			var nameLength = (byte)nameBytes.Length;
 			var gender = (byte)Gender;
 			var zodiac = (byte)ZodiacSign;
 			var fileNameBytes = GetUTF8(ImageFileName);
-			if (fileNameBytes.Length > 255) throw new Exception();
+			if (fileNameBytes.Length > 255) throw new Exception("The image filename is too long.");
 			var fileNameLength = (byte)fileNameBytes.Length;
 			var array = new List<byte>();
 			array.Add(nameLength);
@@ -50,26 +51,34 @@ namespace SC4MySimTool
 
 		private static Bitmap ImportImage(string path)
 		{
-			var source = new Bitmap(path);
-			var destination = new Bitmap(36, 41);
-			var graphics = Graphics.FromImage(destination);
-			graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
-			graphics.DrawImage(source, 0, 0, 36, 41);
-			graphics.Dispose();
-			source.Dispose();
-			destination.SetPixel(0, 0, Color.Magenta);
-			destination.SetPixel(1, 0, Color.Magenta);
-			destination.SetPixel(0, 1, Color.Magenta);
-			destination.SetPixel(34, 0, Color.Magenta);
-			destination.SetPixel(35, 0, Color.Magenta);
-			destination.SetPixel(35, 1, Color.Magenta);
-			destination.SetPixel(0, 39, Color.Magenta);
-			destination.SetPixel(0, 40, Color.Magenta);
-			destination.SetPixel(1, 40, Color.Magenta);
-			destination.SetPixel(34, 40, Color.Magenta);
-			destination.SetPixel(35, 39, Color.Magenta);
-			destination.SetPixel(35, 40, Color.Magenta);
-			return destination;
+			try
+			{
+				using (var source = new Bitmap(path))
+				{
+					var destination = new Bitmap(36, 41);
+					var graphics = Graphics.FromImage(destination);
+					graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+					graphics.DrawImage(source, 0, 0, 36, 41);
+					graphics.Dispose();
+					destination.SetPixel(0, 0, Color.Magenta);
+					destination.SetPixel(1, 0, Color.Magenta);
+					destination.SetPixel(0, 1, Color.Magenta);
+					destination.SetPixel(34, 0, Color.Magenta);
+					destination.SetPixel(35, 0, Color.Magenta);
+					destination.SetPixel(35, 1, Color.Magenta);
+					destination.SetPixel(0, 39, Color.Magenta);
+					destination.SetPixel(0, 40, Color.Magenta);
+					destination.SetPixel(1, 40, Color.Magenta);
+					destination.SetPixel(34, 40, Color.Magenta);
+					destination.SetPixel(35, 39, Color.Magenta);
+					destination.SetPixel(35, 40, Color.Magenta);
+					return destination;
+				}
+			}
+			catch
+			{
+				throw new IOException("Can't import the image.");
+			}
 		}
 
 		private static string GenerateUniqueFileName(string name)

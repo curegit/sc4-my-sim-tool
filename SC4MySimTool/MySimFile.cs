@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.IO;
 using System.Text;
 using System.Drawing;
@@ -20,10 +18,24 @@ namespace SC4MySimTool
 		{
 			CreateMySimFileIfNotExists();
 			var bytes = mySim.Encode();
-			SaveImage(mySim.Bitmap, mySim.ImageFileName);
-			using (var stream = new FileStream(MySimFilePath, FileMode.Append, FileAccess.Write))
+			var img = SaveImage(mySim.Bitmap, mySim.ImageFileName);
+			try
 			{
-				stream.Write(bytes, 0, bytes.Length);
+				using (var stream = new FileStream(MySimFilePath, FileMode.Append, FileAccess.Write))
+				{
+					stream.Write(bytes, 0, bytes.Length);
+				}
+			}
+			catch (IOException)
+			{
+				try
+				{
+					File.Delete(img);
+				}
+				finally
+				{
+					throw new IOException("Can't write to MySims.dat file.");
+				}
 			}
 		}
 
@@ -33,11 +45,20 @@ namespace SC4MySimTool
 
 		}
 
-		private static void SaveImage(Bitmap bitmap, string fileName)
+		private static string SaveImage(Bitmap bitmap, string fileName)
 		{
-			using (var stream = new FileStream(MySimFolderPath + @"\" + fileName + ".bmp", FileMode.CreateNew, FileAccess.Write))
+			try
 			{
-				bitmap.Save(stream, ImageFormat.Bmp);
+				var path = MySimFolderPath + @"\" + fileName + ".bmp";
+				using (var stream = new FileStream(path, FileMode.CreateNew, FileAccess.Write))
+				{
+					bitmap.Save(stream, ImageFormat.Bmp);
+				}
+				return path;
+			}
+			catch (IOException)
+			{
+				throw new IOException("Can't save a image file. ");
 			}
 		}
 
@@ -48,12 +69,19 @@ namespace SC4MySimTool
 
 		private static void CreateMySimFileIfNotExists()
 		{
-			if (!File.Exists(MySimFilePath))
+			try
 			{
-				using (var stream = File.OpenWrite(MySimFilePath))
+				if (!File.Exists(MySimFilePath))
 				{
-					stream.Write(FileType, 0, FileType.Length);
+					using (var stream = File.OpenWrite(MySimFilePath))
+					{
+						stream.Write(FileType, 0, FileType.Length);
+					}
 				}
+			}
+			catch (IOException)
+			{
+				throw new IOException("Can't create MySims.dat file.");
 			}
 		}
 

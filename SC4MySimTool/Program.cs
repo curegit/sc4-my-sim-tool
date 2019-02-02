@@ -13,6 +13,7 @@ namespace SC4MySimTool
 				switch (command)
 				{
 					case "help":
+					default:
 						ShowHelp();
 						break;
 					case "add":
@@ -29,7 +30,7 @@ namespace SC4MySimTool
 			}
 			catch (Exception e)
 			{
-				Console.WriteLine("Exception occurred:");
+				Console.Write("Exception occurred: ");
 				Console.WriteLine(e.Message);
 				return -1;
 			}
@@ -53,7 +54,7 @@ namespace SC4MySimTool
 			}
 			else
 			{
-				throw new ArgumentException("aaaa");
+				throw new ArgumentException("'add' command takes 4 arguments.");
 			}
 		}
 
@@ -65,7 +66,7 @@ namespace SC4MySimTool
 			}
 			else
 			{
-				throw new ArgumentException("");
+				throw new ArgumentException("'remove' command takes 1 argument.");
 			}
 		}
 
