@@ -9,9 +9,9 @@ namespace SC4MySimTool
 	{
 		private static int Main(string[] args)
 		{
-			try
+			if (args.Length > 0)
 			{
-				if (args.Length > 0)
+				try
 				{
 					switch (args[0])
 					{
@@ -30,26 +30,53 @@ namespace SC4MySimTool
 							ShowMySims();
 							break;
 						default:
-							if (File.Exists(args[0])) ReadFromStandardIO(args[0]);
+							if (File.Exists(args[0]))
+							{
+								try
+								{
+									ReadFromStandardIO(args[0]);
+									Console.WriteLine("Press any key to quit.");
+									Console.ReadKey();
+									return 0;
+								}
+								catch (Exception e)
+								{
+									Console.Write("Exception occurred: ");
+									Console.WriteLine(e.Message);
+									Console.WriteLine("Press any key to quit.");
+									Console.ReadKey();
+									return -1;
+								}
+							}
 							else ShowHelp();
 							break;
 					}
+					return 0;
 				}
-				else
+				catch (Exception e)
+				{
+					Console.Write("Exception occurred: ");
+					Console.WriteLine(e.Message);
+					return -1;
+				}
+			}
+			else
+			{
+				try
 				{
 					ReadFromStandardIO();
+					Console.WriteLine("Press any key to quit.");
+					Console.ReadKey();
+					return 0;
 				}
-				Console.WriteLine("Press any key to quit.");
-				Console.ReadKey();
-				return 0;
-			}
-			catch (Exception e)
-			{
-				Console.Write("Exception occurred: ");
-				Console.WriteLine(e.Message);
-				Console.WriteLine("Press any key to quit.");
-				Console.ReadKey();
-				return -1;
+				catch (Exception e)
+				{
+					Console.Write("Exception occurred: ");
+					Console.WriteLine(e.Message);
+					Console.WriteLine("Press any key to quit.");
+					Console.ReadKey();
+					return -1;
+				}
 			}
 		}
 
