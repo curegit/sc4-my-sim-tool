@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -42,7 +43,55 @@ namespace SC4MySimTool
 		public static void Remove(string name)
 		{
 			CreateMySimFileIfNotExists();
-
+			try
+			{
+				using (var stream = new FileStream(MySimFilePath, FileMode.Open, FileAccess.ReadWrite))
+				{
+					var bytes = new byte[stream.Length];
+					stream.Read(bytes, 0, (int)stream.Length);
+					var b = bytes.Skip(4);
+					for (int len = 0, head = 4; b.Count() > 0; head += len, len = 0)
+					{
+						len += 1;
+						var nameLength = (int)b.ElementAt(0);
+						b = b.Skip(1);
+						len += nameLength;
+						var nameBytes = b.Take(nameLength).ToArray();
+						var nameString = DecodeUTF8(nameBytes);
+						b = b.Skip(nameLength);
+						len += 2;
+						b = b.Skip(2);
+						len += 1;
+						var filenameLength = (int)b.ElementAt(0);
+						b = b.Skip(1);
+						var filenameBytes = b.Take(filenameLength).ToArray();
+						var filenameString = DecodeUTF8(filenameBytes);
+						len += filenameLength;
+						if (name == nameString)
+						{
+							var array = bytes.Take(head).Concat(bytes.Skip(head + len)).ToArray();
+							stream.Position = 0;
+							stream.Write(array, 0, array.Length);
+							stream.SetLength(array.Length);
+							try
+							{
+								File.Delete(MySimFolderPath + @"\" + filenameString + ".bmp");
+							}
+							catch
+							{
+								throw new Exception("Removed the Sim from MySims.dat file. But failed to delete the bitmap image file.");
+							}
+							return;
+						}
+						b = b.Skip(filenameLength);
+					}
+					throw new InvalidOperationException("No such Sim.");
+				}
+			}
+			catch (IOException)
+			{
+				throw new IOException("Can't read from or write to MySims.dat file.");
+			}
 		}
 
 		private static string SaveImage(Bitmap bitmap, string fileName)
