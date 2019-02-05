@@ -100,6 +100,7 @@ ImageFileEntry:
 						if (imageFilepath != null)
 						{
 							AddMySim(new string[] { newName, gender, sign, imageFilepath });
+							Console.WriteLine("The operation was completed successfully.");
 							break;
 						}
 						Console.WriteLine("Enter filepath of a image of the Sim.");
