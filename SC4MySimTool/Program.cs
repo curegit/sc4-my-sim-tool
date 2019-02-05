@@ -19,9 +19,11 @@ namespace SC4MySimTool
 							break;
 						case "add":
 							AddMySim(args.Skip(1).ToArray());
+							Console.WriteLine("The operation was completed successfully.");
 							break;
 						case "remove":
 							RemoveMySim(args.Skip(1).ToArray());
+							Console.WriteLine("The operation was completed successfully.");
 							break;
 						case "show":
 							ShowMySims();
@@ -36,7 +38,6 @@ namespace SC4MySimTool
 				{
 					ReadFromStandardIO();
 				}
-				Console.WriteLine("The operation was completed successfully.");
 				Console.WriteLine("Press any key to quit.");
 				Console.ReadKey();
 				return 0;
@@ -104,6 +105,7 @@ ImageFileEntry:
 						var filepath = Console.ReadLine();
 						if (filepath == "") goto ImageFileEntry;
 						AddMySim(new string[] { newName, gender, sign, filepath });
+						Console.WriteLine("The operation was completed successfully.");
 						break;
 					case "remove":
 						while (true)
@@ -116,6 +118,7 @@ ImageFileEntry:
 								break;
 							}
 						}
+						Console.WriteLine("The operation was completed successfully.");
 						break;
 					case "show":
 						ShowMySims();
