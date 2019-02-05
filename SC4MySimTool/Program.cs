@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 
 namespace SC4MySimTool
 {
@@ -135,7 +136,38 @@ ImageFileEntry:
 
 		private static void ShowHelp()
 		{
-			Console.WriteLine("help");
+			Console.WriteLine($@"
+======================================
+This is SC4 My Sim Tool ({Assembly.GetExecutingAssembly().GetName().Version})
+======================================
+
+    Commands
+    --------
+    [None]:
+      Prompt inputs in stdin.
+
+    help:
+      Show this help.
+
+    show:
+      Show the My Sim list.
+
+    add <name> <gender> <sign> <image_path>:
+      Add a new Sim to the list.
+      <gender> = female | male
+      <sign> = aquarius | aries | cancer | capricorn | gemini | leo |
+               libra | pisces | sagittarius | scorpio | taurus | virgo
+
+    remove <name>:
+      Remove a specified Sim from the list and delete its image file.
+
+
+    Drag and Drop
+    -------------
+    Drag and drop a image file to the exe to add a new Sim using its image.
+
+======================================
+");
 		}
 
 		private static void AddMySim(string[] args)
