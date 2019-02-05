@@ -114,6 +114,31 @@ namespace SC4MySimTool
 		public static void Show()
 		{
 			CreateMySimFileIfNotExists();
+			try
+			{
+				using (var stream = new FileStream(MySimFilePath, FileMode.Open, FileAccess.Read))
+				{
+					stream.Seek(4, SeekOrigin.Current);
+					while (stream.Position != stream.Length)
+					{
+						var nameLength = stream.ReadByte();
+						var nameBytes = new byte[nameLength];
+						stream.Read(nameBytes, 0, nameLength);
+						var nameString = DecodeUTF8(nameBytes);
+						var gender = (Gender)stream.ReadByte();
+						var sign = (ZodiacSign)stream.ReadByte();
+						var filenameLength = stream.ReadByte();
+						var filenameBytes = new byte[filenameLength];
+						stream.Read(filenameBytes, 0, filenameLength);
+						var filenameString = DecodeUTF8(filenameBytes);
+						Console.WriteLine($"{nameString} ({gender}) : {sign} [{filenameString}.bmp]");
+					}
+				}
+			}
+			catch
+			{
+				throw new IOException("Can't read MySims.dat file.");
+			}
 		}
 
 		private static void CreateMySimFileIfNotExists()
