@@ -62,7 +62,7 @@ namespace SC4MySimTool
 			}
 		}
 
-		public static void Dump()
+		public static void Show()
 		{
 			CreateMySimFileIfNotExists();
 		}

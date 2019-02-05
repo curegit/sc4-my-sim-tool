@@ -166,7 +166,7 @@ ImageFileEntry:
 
 		private static void ShowMySims()
 		{
-			MySimFile.Dump();
+			MySimFile.Show();
 		}
 
 		private static Gender ParseGender(string gender)
