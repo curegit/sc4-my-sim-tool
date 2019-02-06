@@ -11,6 +11,8 @@ If you execute the application with no arguments, it prompts inputs in standard 
 
 ### Commands
 
+Command lines below are available.
+
 `help`  
 Show the help.
 
