@@ -20,7 +20,7 @@ Show the list of My Sims written in the DAT file.
 `add <name> <gender> <sign> <image_path>`  
 Add a new Sim to the list.  
 `<image_path>` is absolute or relative.  
-The image format is JPG, PNG, GIF, EXIF, TIFF or BMP.
+The image format must be JPG, PNG, GIF, EXIF, TIFF or BMP.
 
 `remove <name>`  
 Remove a specified Sim from the list and delete its image file.
