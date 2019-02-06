@@ -31,6 +31,8 @@ Remove a specified Sim from the list and delete its image file.
 
 Drag and drop a image file to the exe to add a new Sim using its image.
 
+![Lenna DD Example](Lenna.gif)
+
 ### Gender Values
 
 Type one of these to input gender.
