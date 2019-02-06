@@ -1,6 +1,6 @@
 # SC4 My Sim Tool
 
-A Mod tool for SimCity 4.
+A mod tool for SimCity 4.
 You can add your original My Sims with custom images.
 
 ## Usage
@@ -56,3 +56,5 @@ Type one of these to input sign.
 ## Notes
 
 - The DAT file and images will be saved in `{MyDocuments}/SimCity 4/MySim`
+- Information of Sims will be copied into each save of cities where the Sim lives except the bitmap.
+- If you remove a Sim from the DAT file, the Sim remains in cities, but the image will be missing.
