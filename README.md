@@ -12,18 +12,18 @@ If you execute the application with no arguments, it prompts inputs in standard 
 ### Commands
 
 `help`  
-　Show the help.
+Show the help.
 
 `show`  
-　Show the list of My Sims written in the DAT file.
+Show the list of My Sims written in the DAT file.
 
 `add <name> <gender> <sign> <image_path>`  
-　Add a new Sim to the list.  
-　`<image_path>` is absolute or relative.  
-　The image format is JPG, PNG, GIF, EXIF, TIFF or BMP.
+Add a new Sim to the list.  
+`<image_path>` is absolute or relative.  
+The image format is JPG, PNG, GIF, EXIF, TIFF or BMP.
 
 `remove <name>`  
-　Remove a specified Sim from the list and delete its image file.
+Remove a specified Sim from the list and delete its image file.
 
 ### Drag and Drop
 
