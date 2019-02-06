@@ -9,6 +9,8 @@ You can add your original My Sims with custom images.
 
 If you execute the application with no arguments, it prompts inputs in standard input.
 
+![Abe Stdin Example](Abe.png)
+
 ### Commands
 
 Command lines below are available.
