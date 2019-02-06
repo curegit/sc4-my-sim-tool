@@ -1,12 +1,13 @@
 # SC4 My Sim Tool
 
-A MOD tool for SimCity 4.
+A Mod tool for SimCity 4.
+You can add your original My Sims with custom images.
 
 ## Usage
 
 ### Without Commands
 
-
+If you execute the application with no arguments, it prompts inputs in standard input.
 
 ### Commands
 
@@ -17,13 +18,12 @@ A MOD tool for SimCity 4.
 　Show the list of My Sims written in the DAT file.
 
 `add <name> <gender> <sign> <image_path>`  
-　Add a new Sim to the list.
-　
-　`<image_path>` is absolute or relative.
+　Add a new Sim to the list.  
+　`<image_path>` is absolute or relative.  
 　The image format is JPG, PNG, GIF, EXIF, TIFF or BMP.
 
-`remove <name>`
-  Remove a specified Sim from the list and delete its image file.
+`remove <name>`  
+　Remove a specified Sim from the list and delete its image file.
 
 ### Drag and Drop
 
@@ -31,10 +31,14 @@ Drag and drop a image file to the exe to add a new Sim using its image.
 
 ### Gender Values
 
+Type one of these to input gender.
+
 - female
 - male
 
 ### Sign Values
+
+Type one of these to input sign.
 
 - aquarius
 - aries
@@ -51,4 +55,4 @@ Drag and drop a image file to the exe to add a new Sim using its image.
 
 ## Notes
 
-The DAT file and images will be saved in `{MyDocuments}/SimCity 4/MySim`.
+- The DAT file and images will be saved in `{MyDocuments}/SimCity 4/MySim`
