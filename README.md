@@ -66,3 +66,5 @@ Type one of these to input sign.
 - The DAT file and images will be saved in `{MyDocuments}/SimCity 4/MySim`
 - Information of Sims will be copied into each save of cities where the Sim lives except the bitmap.
 - If you remove a Sim from the DAT file, the Sim remains in cities, but the image will be missing.
+
+![Miku Lives](Living.png)
