@@ -118,6 +118,7 @@ namespace SC4MySimTool
 			{
 				using (var stream = new FileStream(MySimFilePath, FileMode.Open, FileAccess.Read))
 				{
+					var count = 0;
 					stream.Seek(4, SeekOrigin.Current);
 					while (stream.Position != stream.Length)
 					{
@@ -131,7 +132,8 @@ namespace SC4MySimTool
 						var filenameBytes = new byte[filenameLength];
 						stream.Read(filenameBytes, 0, filenameLength);
 						var filenameString = DecodeUTF8(filenameBytes);
-						Console.WriteLine($"{nameString} ({gender}) : {sign} [{filenameString}.bmp]");
+						Console.WriteLine($"{nameString} ({gender}) : {sign} [{filenameString}.bmp][{count}]");
+						count++;
 					}
 				}
 			}
