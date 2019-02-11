@@ -12,7 +12,7 @@
 		Leo = 0x07,
 		Virgo = 0x08,
 		Libra = 0x09,
-		Scorpio = 0x10,
-		Sagittarius = 0x11,
+		Scorpio = 0x0A,
+		Sagittarius = 0x0B,
 	}
 }
