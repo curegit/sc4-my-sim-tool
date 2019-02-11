@@ -3,6 +3,8 @@
 A mod tool for SimCity 4.
 You can add your original My Sims with custom images.
 
+![My Sim View](MySims.png)
+
 ## Usage
 
 ### Without Commands
