@@ -94,6 +94,70 @@ namespace SC4MySimTool
 			}
 		}
 
+		public static void Reorder(int source, int destination)
+		{
+			CreateMySimFileIfNotExists();
+			try
+			{
+				using (var stream = new FileStream(MySimFilePath, FileMode.Open, FileAccess.ReadWrite))
+				{
+					var sourceHead = 0;
+					var sourceLength = 0;
+					var destinationPosition = 0;
+					var bytes = new byte[stream.Length];
+					stream.Read(bytes, 0, (int)stream.Length);
+					var b = bytes.Skip(4);
+					var i = 0;
+					var head = 4;
+					for (var len = 0; b.Count() > 0; i++, head += len, len = 0)
+					{
+						len += 1;
+						var nameLength = (int)b.ElementAt(0);
+						b = b.Skip(1);
+						len += nameLength;
+						b = b.Skip(nameLength);
+						len += 2;
+						b = b.Skip(2);
+						len += 1;
+						var filenameLength = (int)b.ElementAt(0);
+						b = b.Skip(1);
+						len += filenameLength;
+						b = b.Skip(filenameLength);
+						if (i == destination)
+						{
+							destinationPosition = head - sourceLength;
+						}
+						if (i == source)
+						{
+							sourceHead = head;
+							sourceLength = len;
+						}
+					}
+					if (i == destination)
+					{
+						destinationPosition = head - sourceLength;
+					}
+					if (sourceHead == 0)
+					{
+						throw new InvalidOperationException("Source index is out of range.");
+					}
+					if (destinationPosition == 0)
+					{
+						throw new InvalidOperationException("Destination index is out of range.");
+					}
+					var moving = bytes.Skip(sourceHead).Take(sourceLength).ToArray();
+					var deleted = bytes.Take(sourceHead).Concat(bytes.Skip(sourceHead + sourceLength)).ToArray();
+					var array = deleted.Take(destinationPosition).Concat(moving).Concat(deleted.Skip(destinationPosition)).ToArray();
+					stream.Position = 0;
+					stream.Write(array, 0, array.Length);
+				}
+			}
+			catch (IOException)
+			{
+				throw new IOException("Can't read from or write to MySims.dat file.");
+			}
+		}
+
 		private static string SaveImage(Bitmap bitmap, string fileName)
 		{
 			try
