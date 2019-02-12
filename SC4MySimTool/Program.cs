@@ -26,6 +26,10 @@ namespace SC4MySimTool
 							RemoveMySim(args.Skip(1).ToArray());
 							Console.WriteLine("The operation was completed successfully.");
 							break;
+						case "reorder":
+							ReorderMySim(args.Skip(1).ToArray());
+							Console.WriteLine("The operation was completed successfully.");
+							break;
 						case "show":
 							ShowMySims();
 							break;
@@ -87,7 +91,7 @@ namespace SC4MySimTool
 				string command;
 				if (imageFilepath == null)
 				{
-					Console.WriteLine("Type 'add', 'remove', 'show', or 'help'.");
+					Console.WriteLine("Type 'add', 'remove', 'reorder', 'show', or 'help'.");
 					command = Console.ReadLine();
 				}
 				else
@@ -147,6 +151,31 @@ ImageFileEntry:
 								break;
 							}
 						}
+						Console.WriteLine("The operation was completed successfully.");
+						break;
+					case "reorder":
+						int source, destination;
+SourceEntry:
+						Console.WriteLine("Type index number of a Sim you want to move.");
+						try
+						{
+							source = int.Parse(Console.ReadLine());
+						}
+						catch
+						{
+							goto SourceEntry;
+						}
+DestinationEntry:
+						Console.WriteLine("");
+						try
+						{
+							destination = int.Parse(Console.ReadLine());
+						}
+						catch
+						{
+							goto DestinationEntry;
+						}
+						MySimFile.Reorder(source, destination);
 						Console.WriteLine("The operation was completed successfully.");
 						break;
 					case "show":
@@ -224,6 +253,28 @@ This is SC4 My Sim Tool ({Assembly.GetExecutingAssembly().GetName().Version})
 			else
 			{
 				throw new ArgumentException("'remove' command takes 1 argument.");
+			}
+		}
+
+		private static void ReorderMySim(string[] args)
+		{
+			if (args.Length == 2)
+			{
+				int from, to;
+				try
+				{
+					from = int.Parse(args[0]);
+					to = int.Parse(args[1]);
+				}
+				catch
+				{
+					throw new ArgumentException("'reorder' command takes 2 integers.");
+				}
+				MySimFile.Reorder(from, to);
+			}
+			else
+			{
+				throw new ArgumentException("'reorder' command takes 2 arguments.");
 			}
 		}
 
