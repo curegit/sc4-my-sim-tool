@@ -199,6 +199,7 @@ namespace SC4MySimTool
 						Console.WriteLine($"{nameString} ({gender}) : {sign} [{filenameString}.bmp][{count}]");
 						count++;
 					}
+					if (count == 0) Console.WriteLine("No Sim.");
 				}
 			}
 			catch
