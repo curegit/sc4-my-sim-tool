@@ -175,7 +175,7 @@ namespace SC4MySimTool
 			}
 		}
 
-		public static void Show()
+		public static int Show(bool index)
 		{
 			CreateMySimFileIfNotExists();
 			try
@@ -196,10 +196,13 @@ namespace SC4MySimTool
 						var filenameBytes = new byte[filenameLength];
 						stream.Read(filenameBytes, 0, filenameLength);
 						var filenameString = DecodeUTF8(filenameBytes);
+						if (index) Console.WriteLine($"  + Destination: [{count}]");
 						Console.WriteLine($"{nameString} ({gender}) : {sign} [{filenameString}.bmp][{count}]");
 						count++;
 					}
 					if (count == 0) Console.WriteLine("No Sim.");
+					else if (index) Console.WriteLine($"  + Destination: [{count}]");
+					return count;
 				}
 			}
 			catch
