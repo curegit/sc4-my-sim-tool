@@ -278,9 +278,9 @@ This is SC4 My Sim Tool ({Assembly.GetExecutingAssembly().GetName().Version})
 			}
 		}
 
-		private static void ShowMySims()
+		private static int ShowMySims(bool index = false)
 		{
-			MySimFile.Show();
+			return MySimFile.Show(index);
 		}
 
 		private static Gender ParseGender(string gender)
