@@ -166,7 +166,7 @@ SourceEntry:
 							goto SourceEntry;
 						}
 DestinationEntry:
-						Console.WriteLine("");
+						Console.WriteLine("Type destination index number.");
 						try
 						{
 							destination = int.Parse(Console.ReadLine());
