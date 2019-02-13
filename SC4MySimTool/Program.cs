@@ -154,6 +154,9 @@ ImageFileEntry:
 						Console.WriteLine("The operation was completed successfully.");
 						break;
 					case "reorder":
+						var count = ShowMySims(true);
+						if (count == 0) return;
+						Console.WriteLine("--------------------------------------------------");
 						int source, destination;
 SourceEntry:
 						Console.WriteLine("Type index number of a Sim you want to move.");
