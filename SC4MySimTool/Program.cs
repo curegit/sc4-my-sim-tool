@@ -31,7 +31,7 @@ namespace SC4MySimTool
 							Console.WriteLine("The operation was completed successfully.");
 							break;
 						case "show":
-							ShowMySims();
+							ShowMySims(args.Length == 2 && args[1] == "-i");
 							break;
 						default:
 							if (File.Exists(args[0]))
