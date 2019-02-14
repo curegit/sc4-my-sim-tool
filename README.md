@@ -22,16 +22,22 @@ Command lines below are available.
 `help`  
 Show the help.
 
-`show`  
-Show the list of My Sims written in the DAT file.
+`show [-i]`  
+Show the list of My Sims written in the DAT file.  
+When '-i' is given, indexes used for reordering are also shown.
 
 `add <name> <gender> <sign> <image_path>`  
 Add a new Sim to the list.  
-`<image_path>` is absolute or relative.  
+<image_path> is absolute or relative.  
 The image format must be JPG, PNG, GIF, EXIF, TIFF or BMP.
 
 `remove <name>`  
 Remove a specified Sim from the list and delete its image file.
+
+`reorder <source_index> <destination_index>`  
+Reorder a specified Sim.  
+Move him/her to a given index position.  
+Use 'show -i' to see indexes.
 
 ### Drag and Drop
 
