@@ -209,8 +209,9 @@ This is SC4 My Sim Tool ({Assembly.GetExecutingAssembly().GetName().Version})
     help:
       Show this help.
 
-    show:
+    show [-i]:
       Show the My Sim list.
+      Show indexes used for reordering when '-i' is given.
 
     add <name> <gender> <sign> <image_path>:
       Add a new Sim to the list.
@@ -220,6 +221,11 @@ This is SC4 My Sim Tool ({Assembly.GetExecutingAssembly().GetName().Version})
 
     remove <name>:
       Remove a specified Sim from the list and delete its image file.
+
+    reorder <source_index> <destination_index>:
+      Reorder a specified Sim.
+      Move him/her to a given index position.
+      Use 'show -i' to see indexes.
 
 
     Drag and Drop
