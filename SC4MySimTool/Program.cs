@@ -197,14 +197,18 @@ DestinationEntry:
 		private static void ShowHelp()
 		{
 			Console.WriteLine($@"
-======================================
-This is SC4 My Sim Tool ({Assembly.GetExecutingAssembly().GetName().Version})
-======================================
+=====================================
+      SC4 My Sim Tool ({Assembly.GetExecutingAssembly().GetName().Version})
+=====================================
 
     Commands
     --------
-    [None]:
+    (empty):
       Prompt inputs in stdin.
+
+    <image_path>:
+      Add a new Sim to the list using the image.
+      Prompt remaining inputs in stdin.
 
     help:
       Show this help.
@@ -231,6 +235,9 @@ This is SC4 My Sim Tool ({Assembly.GetExecutingAssembly().GetName().Version})
     Drag and Drop
     -------------
     Drag and drop a image file to the exe to add a new Sim using its image.
+
+
+    The image format must be JPG, PNG, GIF, EXIF, TIFF or BMP.
 
 ======================================
 ");
