@@ -7,17 +7,21 @@ You can add your original My Sims with custom images.
 
 ![My Sim View](MySims.png)
 
+## Requirements
+
+- Windows
+- .NET Framework 4.0
+- SimCity 4 Rush Hour/Deluxe
+
 ## Usage
 
-### Without Commands
+### Interactive
 
-If you execute the application with no arguments, it prompts inputs in standard input.
+If you execute the application with no command line arguments, it prompts inputs in standard input.
 
 ![Abe Stdin Example](Abe.png)
 
 ### Commands
-
-Command lines below are available.
 
 `help`  
 Show the help.
