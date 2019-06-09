@@ -5,7 +5,7 @@ You can add your original My Sims with custom images.
 
 [Download the latest version](https://github.com/curegit/sc4-my-sim-tool/releases/)
 
-![My Sim View](MySims.png)
+![My Sim View](Screenshots/MySims.png)
 
 ## Requirements
 
@@ -19,7 +19,7 @@ You can add your original My Sims with custom images.
 
 If you execute the application with no command line arguments, it prompts inputs in standard input.
 
-![Abe Stdin Example](Abe.png)
+![Abe Stdin Example](Screenshots/Abe.png)
 
 ### Commands
 
@@ -47,7 +47,7 @@ Use 'show -i' to see indexes.
 
 Drag and drop a image file to the exe to add a new Sim using its image.
 
-![Lenna DD Example](Lenna.gif)
+![Lenna DD Example](Screenshots/Lenna.gif)
 
 ### Gender Values
 
@@ -79,4 +79,4 @@ Type one of these to input sign.
 - Information of Sims will be copied into each save of cities where the Sim lives except the bitmap.
 - If you remove a Sim from the DAT file, the Sim remains in cities, but the image will be missing.
 
-![Miku Lives](Living.png)
+![Miku Lives](Screenshots/Living.png)
