@@ -86,7 +86,18 @@ namespace SC4MySimTool
 			var sha = new SHA512CryptoServiceProvider();
 			var hash = sha.ComputeHash(Encoding.Unicode.GetBytes(name));
 			var base64 = Convert.ToBase64String(hash, Base64FormattingOptions.None);
-			return base64.Replace('/', '-').Substring(0, 12);
+			var valid = PathValidName(base64);
+			return valid.Substring(0, 12);
+		}
+
+		private static string PathValidName(string name)
+		{
+			var valid = name;
+			foreach (var illegal in Path.GetInvalidPathChars())
+			{
+				valid.Replace(illegal, '-');
+			}
+			return valid;
 		}
 
 		private static byte[] GetUTF8(string str)

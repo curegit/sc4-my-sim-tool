@@ -11,9 +11,9 @@ namespace SC4MySimTool
 	{
 		private static readonly byte[] FileType = { 0xAA, 0xE4, 0x32, 0x4A };
 
-		private static readonly string MySimFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\SimCity 4\MySim";
+		private static readonly string MySimFolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "SimCity 4", "MySim");
 
-		private static readonly string MySimFilePath = MySimFolderPath + @"\MySims.dat";
+		private static readonly string MySimFilePath = Path.Combine(MySimFolderPath, "MySims.dat");
 
 		public static void Add(MySim mySim)
 		{
@@ -75,7 +75,7 @@ namespace SC4MySimTool
 							stream.SetLength(array.Length);
 							try
 							{
-								File.Delete(MySimFolderPath + @"\" + filenameString + ".bmp");
+								File.Delete(Path.Combine(MySimFolderPath, filenameString + ".bmp"));
 							}
 							catch
 							{
@@ -162,7 +162,7 @@ namespace SC4MySimTool
 		{
 			try
 			{
-				var path = MySimFolderPath + @"\" + fileName + ".bmp";
+				var path = Path.Combine(MySimFolderPath, fileName + ".bmp");
 				using (var stream = new FileStream(path, FileMode.CreateNew, FileAccess.Write))
 				{
 					bitmap.Save(stream, ImageFormat.Bmp);
