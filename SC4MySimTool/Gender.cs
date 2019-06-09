@@ -1,4 +1,4 @@
-﻿namespace SC4MySimTool
+namespace SC4MySimTool
 {
 	public enum Gender : byte
 	{
