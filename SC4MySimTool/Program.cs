@@ -101,11 +101,11 @@ namespace SC4MySimTool
 				switch (command)
 				{
 					case "add":
-NameEntry:
+						NameEntry:
 						Console.WriteLine("Enter a name of a new Sim.");
 						var newName = Console.ReadLine();
 						if (newName == "") goto NameEntry;
-GenderEntry:
+						GenderEntry:
 						Console.WriteLine("Enter gender of the Sim. Type 'male' or 'female'.");
 						var gender = Console.ReadLine();
 						try
@@ -116,7 +116,7 @@ GenderEntry:
 						{
 							goto GenderEntry;
 						}
-SignEntry:
+						SignEntry:
 						Console.WriteLine("Enter sign of the Sim. Type 'aquarius', 'aries', 'cancer', 'capricorn', 'gemini', 'leo', 'libra', 'pisces', 'sagittarius', 'scorpio', 'taurus', or 'virgo'.");
 						var sign = Console.ReadLine();
 						try
@@ -127,7 +127,7 @@ SignEntry:
 						{
 							goto SignEntry;
 						}
-ImageFileEntry:
+						ImageFileEntry:
 						if (imageFilepath != null)
 						{
 							AddMySim(new string[] { newName, gender, sign, imageFilepath });
@@ -158,7 +158,7 @@ ImageFileEntry:
 						if (count == 0) return;
 						Console.WriteLine("--------------------------------------------------");
 						int source, destination;
-SourceEntry:
+						SourceEntry:
 						Console.WriteLine("Type index number of a Sim you want to move.");
 						try
 						{
@@ -168,7 +168,7 @@ SourceEntry:
 						{
 							goto SourceEntry;
 						}
-DestinationEntry:
+						DestinationEntry:
 						Console.WriteLine("Type destination index number.");
 						try
 						{
