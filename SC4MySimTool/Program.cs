@@ -201,6 +201,8 @@ $@"=====================================
       SC4 My Sim Tool ({Assembly.GetExecutingAssembly().GetName().Version})
 =====================================
 
+    A mod tool for SimCity 4 to add My Sims with custom images
+
     Commands
     --------
     (empty):
