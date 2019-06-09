@@ -45,7 +45,7 @@ namespace SC4MySimTool
 								}
 								catch (Exception e)
 								{
-									Console.Write("Exception occurred: ");
+									Console.Write("An error occurred: ");
 									Console.WriteLine(e.Message);
 									Console.WriteLine("Press any key to quit.");
 									Console.ReadKey();
@@ -59,7 +59,7 @@ namespace SC4MySimTool
 				}
 				catch (Exception e)
 				{
-					Console.Write("Exception occurred: ");
+					Console.Write("An error occurred: ");
 					Console.WriteLine(e.Message);
 					return -1;
 				}
@@ -75,7 +75,7 @@ namespace SC4MySimTool
 				}
 				catch (Exception e)
 				{
-					Console.Write("Exception occurred: ");
+					Console.Write("An error occurred: ");
 					Console.WriteLine(e.Message);
 					Console.WriteLine("Press any key to quit.");
 					Console.ReadKey();
@@ -117,7 +117,7 @@ namespace SC4MySimTool
 							goto GenderEntry;
 						}
 						SignEntry:
-						Console.WriteLine("Enter sign of the Sim. Type 'aquarius', 'aries', 'cancer', 'capricorn', 'gemini', 'leo', 'libra', 'pisces', 'sagittarius', 'scorpio', 'taurus', or 'virgo'.");
+						Console.WriteLine("Enter a sign of the Sim. Type 'aquarius', 'aries', 'cancer', 'capricorn', 'gemini', 'leo', 'libra', 'pisces', 'sagittarius', 'scorpio', 'taurus', or 'virgo'.");
 						var sign = Console.ReadLine();
 						try
 						{
@@ -196,26 +196,26 @@ namespace SC4MySimTool
 
 		private static void ShowHelp()
 		{
-			Console.WriteLine($@"
-=====================================
+			Console.WriteLine(
+$@"=====================================
       SC4 My Sim Tool ({Assembly.GetExecutingAssembly().GetName().Version})
 =====================================
 
     Commands
     --------
     (empty):
-      Prompt inputs in stdin.
+      Prompt inputs in stdin (interactive mode).
 
     <image_path>:
       Add a new Sim to the list using the image.
-      Prompt remaining inputs in stdin.
+      Prompt remaining inputs in stdin (interactive mode).
 
     help:
       Show this help.
 
-    show [-i]:
+    show [-i, --index]:
       Show the My Sim list.
-      Show indexes used for reordering when '-i' is given.
+      Show indexes used for reordering when '-i' or '--index' is given.
 
     add <name> <gender> <sign> <image_path>:
       Add a new Sim to the list.
@@ -229,13 +229,11 @@ namespace SC4MySimTool
     reorder <source_index> <destination_index>:
       Reorder a specified Sim.
       Move him/her to a given index position.
-      Use 'show -i' to see indexes.
-
+      Use 'show -i' or 'show --index' to see indexes.
 
     Drag and Drop
     -------------
     Drag and drop a image file to the exe to add a new Sim using its image.
-
 
     The image format must be JPG, PNG, GIF, EXIF, TIFF or BMP.
 
