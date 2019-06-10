@@ -217,6 +217,10 @@ namespace SC4MySimTool
 			{
 				if (!File.Exists(MySimFilePath))
 				{
+					if (!Directory.Exists(MySimFolderPath))
+					{
+						Directory.CreateDirectory(MySimFolderPath);
+					}
 					using (var stream = File.OpenWrite(MySimFilePath))
 					{
 						stream.Write(FileType, 0, FileType.Length);
