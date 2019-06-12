@@ -40,7 +40,7 @@ namespace SC4MySimTool
 			}
 		}
 
-		public static void Remove(string name)
+		public static void Remove(int index)
 		{
 			CreateMySimFileIfNotExists();
 			try
@@ -50,14 +50,12 @@ namespace SC4MySimTool
 					var bytes = new byte[stream.Length];
 					stream.Read(bytes, 0, (int)stream.Length);
 					var b = bytes.Skip(4);
-					for (int len = 0, head = 4; b.Count() > 0; head += len, len = 0)
+					for (int len = 0, head = 4, i = 0; b.Count() > 0; head += len, len = 0, i++)
 					{
 						len += 1;
 						var nameLength = (int)b.ElementAt(0);
 						b = b.Skip(1);
 						len += nameLength;
-						var nameBytes = b.Take(nameLength).ToArray();
-						var nameString = DecodeUTF8(nameBytes);
 						b = b.Skip(nameLength);
 						len += 2;
 						b = b.Skip(2);
@@ -67,7 +65,7 @@ namespace SC4MySimTool
 						var filenameBytes = b.Take(filenameLength).ToArray();
 						var filenameString = DecodeUTF8(filenameBytes);
 						len += filenameLength;
-						if (name == nameString)
+						if (i == index)
 						{
 							var array = bytes.Take(head).Concat(bytes.Skip(head + len)).ToArray();
 							stream.Position = 0;
@@ -85,7 +83,7 @@ namespace SC4MySimTool
 						}
 						b = b.Skip(filenameLength);
 					}
-					throw new InvalidOperationException("No such Sim.");
+					throw new InvalidOperationException("Index is out of range.");
 				}
 			}
 			catch (IOException)

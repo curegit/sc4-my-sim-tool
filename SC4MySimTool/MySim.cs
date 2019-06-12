@@ -84,7 +84,7 @@ namespace SC4MySimTool
 		private static string GenerateUniqueFileName(string name)
 		{
 			var sha = new SHA512CryptoServiceProvider();
-			var hash = sha.ComputeHash(Encoding.Unicode.GetBytes(name));
+			var hash = sha.ComputeHash(Encoding.Unicode.GetBytes(name + DateTime.Now.ToString()));
 			var base64 = Convert.ToBase64String(hash, Base64FormattingOptions.None);
 			var valid = PathValidName(base64);
 			return valid.Substring(0, 12);

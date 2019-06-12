@@ -143,11 +143,11 @@ namespace SC4MySimTool
 					case "remove":
 						while (true)
 						{
-							Console.WriteLine("Type the name of a Sim you want to remove.");
-							var name = Console.ReadLine();
-							if (name != "")
+							Console.WriteLine("Type index number of a Sim you want to remove.");
+							var number = Console.ReadLine();
+							if (number != "")
 							{
-								RemoveMySim(new string[] { name });
+								RemoveMySim(new string[] { number });
 								break;
 							}
 						}
@@ -225,7 +225,7 @@ $@"=====================================
       <sign> = aquarius | aries | cancer | capricorn | gemini | leo |
                libra | pisces | sagittarius | scorpio | taurus | virgo
 
-    remove <name>:
+    remove <index>:
       Remove a specified Sim from the list and delete its image file.
 
     reorder <source_index> <destination_index>:
@@ -264,7 +264,16 @@ $@"=====================================
 		{
 			if (args.Length == 1)
 			{
-				MySimFile.Remove(args[0]);
+				int i;
+				try
+				{
+					i = int.Parse(args[0]);
+				}
+				catch
+				{
+					throw new ArgumentException("'remove' command takes a integer.");
+				}
+				MySimFile.Remove(i);
 			}
 			else
 			{
