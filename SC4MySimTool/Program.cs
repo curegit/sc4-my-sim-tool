@@ -141,16 +141,23 @@ namespace SC4MySimTool
 						Console.WriteLine("The operation was completed successfully.");
 						break;
 					case "remove":
+						var c = ShowMySims();
+						if (c == 0) return;
+						Console.WriteLine("--------------------------------------------------");
+						int i;
 						while (true)
 						{
 							Console.WriteLine("Type index number of a Sim you want to remove.");
 							var number = Console.ReadLine();
 							if (number != "")
 							{
-								RemoveMySim(new string[] { number });
-								break;
+								if (int.TryParse(number, out i))
+								{
+									break;
+								}
 							}
 						}
+						MySimFile.Remove(i);
 						Console.WriteLine("The operation was completed successfully.");
 						break;
 					case "reorder":
