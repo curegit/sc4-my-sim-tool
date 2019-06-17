@@ -77,7 +77,7 @@ namespace SC4MySimTool
 							}
 							catch
 							{
-								throw new Exception("Removed the Sim from MySims.dat file. But failed to delete the bitmap image file.");
+								throw new Exception("Removed the Sim from MySims.dat file, but failed to delete its bitmap image file.");
 							}
 							return;
 						}
@@ -169,7 +169,7 @@ namespace SC4MySimTool
 			}
 			catch (IOException)
 			{
-				throw new IOException("Can't save a image file. A Sim with the same name may already exist.");
+				throw new IOException("Can't save a image file. Please try again.");
 			}
 		}
 
