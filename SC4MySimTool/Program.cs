@@ -219,43 +219,43 @@ $@"=====================================
       SC4 My Sim Tool ({Assembly.GetExecutingAssembly().GetName().Version})
 =====================================
 
-    A mod tool for SimCity 4 to add My Sims with custom images
+  A mod tool for SimCity 4 to add My Sims with custom images
 
-    Commands
-    --------
-    (empty):
-      Prompt inputs in stdin (interactive mode).
+  Commands
+  --------
+  (empty):
+    Prompt inputs in stdin (interactive mode).
 
-    <image_path>:
-      Add a new Sim to the list using the image.
-      Prompt remaining inputs in stdin (interactive mode).
+  <image_path>:
+    Add a new Sim to the list using the image.
+    Prompt remaining inputs in stdin (interactive mode).
 
-    help:
-      Show this help.
+  help:
+    Show this help.
 
-    show [-r, --reorder]:
-      Show the My Sim list.
-      Show indexes used for reordering when '-r' or '--reorder' is given.
+  show [-r, --reorder]:
+    Show the My Sim list.
+    Show indexes used for reordering when '-r' or '--reorder' is given.
 
-    add <name> <gender> <sign> <image_path>:
-      Add a new Sim to the list.
-      <gender> = female | male
-      <sign> = aquarius | aries | cancer | capricorn | gemini | leo |
-               libra | pisces | sagittarius | scorpio | taurus | virgo
+  add <name> <gender> <sign> <image_path>:
+    Add a new Sim to the list.
+    <gender> = female | male
+    <sign> = aquarius | aries | cancer | capricorn | gemini | leo |
+             libra | pisces | sagittarius | scorpio | taurus | virgo
 
-    remove <index>:
-      Remove a specified Sim from the list and delete its image file.
+  remove <index>:
+    Remove a specified Sim from the list and delete its image file.
 
-    reorder <source_index> <destination_index>:
-      Reorder a specified Sim.
-      Move him/her to a given index position.
-      Use 'show -r' or 'show --reorder' to see indexes.
+  reorder <source_index> <destination_index>:
+    Reorder a specified Sim.
+    Move him/her to a given index position.
+    Use 'show -r' or 'show --reorder' to see indexes.
 
-    Drag and Drop
-    -------------
-    Drag and drop a image file to the exe to add a new Sim using its image.
+  Drag and Drop
+  -------------
+  Drag and drop a image file to the exe to add a new Sim using its image.
 
-    The image format must be JPG, PNG, GIF, EXIF, TIFF or BMP.
+  The image format must be JPG, PNG, GIF, EXIF, TIFF or BMP.
 
 ======================================
 ");
