@@ -31,7 +31,18 @@ namespace SC4MySimTool
 							Console.WriteLine("The operation was completed successfully.");
 							break;
 						case "show":
-							ShowMySims(args.Length == 2 && (args[1] == "-r" || args[1] == "--reorder"));
+							switch (args.Length)
+							{
+								case 1:
+									ShowMySims();
+									break;
+								case 2:
+									if (args[1] == "-r" || args[1] == "--reorder") ShowMySims(true);
+									else throw new ArgumentException("An unknown option was passed.");
+									break;
+								default:
+									throw new ArgumentException("An unknown option was passed.");
+							}
 							break;
 						default:
 							if (File.Exists(args[0]))
