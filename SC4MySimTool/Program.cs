@@ -31,7 +31,7 @@ namespace SC4MySimTool
 							Console.WriteLine("The operation was completed successfully.");
 							break;
 						case "show":
-							ShowMySims(args.Length == 2 && (args[1] == "-i" || args[1] == "--index"));
+							ShowMySims(args.Length == 2 && (args[1] == "-r" || args[1] == "--reorder"));
 							break;
 						default:
 							if (File.Exists(args[0]))
@@ -215,9 +215,9 @@ $@"=====================================
     help:
       Show this help.
 
-    show [-i, --index]:
+    show [-r, --reorder]:
       Show the My Sim list.
-      Show indexes used for reordering when '-i' or '--index' is given.
+      Show indexes used for reordering when '-r' or '--reorder' is given.
 
     add <name> <gender> <sign> <image_path>:
       Add a new Sim to the list.
@@ -231,7 +231,7 @@ $@"=====================================
     reorder <source_index> <destination_index>:
       Reorder a specified Sim.
       Move him/her to a given index position.
-      Use 'show -i' or 'show --index' to see indexes.
+      Use 'show -r' or 'show --reorder' to see indexes.
 
     Drag and Drop
     -------------
@@ -303,9 +303,9 @@ $@"=====================================
 			}
 		}
 
-		private static int ShowMySims(bool index = false)
+		private static int ShowMySims(bool reorder = false)
 		{
-			return MySimFile.Show(index);
+			return MySimFile.Show(reorder);
 		}
 
 		private static Gender ParseGender(string gender)
