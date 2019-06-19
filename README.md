@@ -1,6 +1,7 @@
 # SC4 My Sim Tool
 
-A mod tool for SimCity 4.
+A mod tool for SimCity 4
+
 You can add your original My Sims with custom images.
 
 [Download the latest version](https://github.com/curegit/sc4-my-sim-tool/releases/)
@@ -10,7 +11,7 @@ You can add your original My Sims with custom images.
 ## Requirements
 
 - Windows
-- .NET Framework 4.0
+- .NET Framework 4.0+
 - SimCity 4 Rush Hour/Deluxe
 
 ## Usage
