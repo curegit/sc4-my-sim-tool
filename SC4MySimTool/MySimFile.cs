@@ -165,6 +165,7 @@ namespace SC4MySimTool
 				{
 					bitmap.Save(stream, ImageFormat.Bmp);
 				}
+				Console.WriteLine($"Image Saved: {path}");
 				return path;
 			}
 			catch (IOException)
