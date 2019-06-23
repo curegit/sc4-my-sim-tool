@@ -224,9 +224,9 @@ namespace SC4MySimTool
 		private static void ShowHelp()
 		{
 			Console.WriteLine(
-$@"==================================================
-            SC4 My Sim Tool ({Assembly.GetExecutingAssembly().GetName().Version})
-==================================================
+$@"================================================================
+                SimCity 4 My Sim Tool ({Assembly.GetExecutingAssembly().GetName().Version})
+================================================================
 
   A mod tool for SimCity 4 to add My Sims with custom images
 
@@ -238,6 +238,7 @@ $@"==================================================
   <image_path>:
     Add a new Sim to the list using the image.
     Prompt remaining inputs in standard input (interactive mode).
+    This is same as drag and drop. See the description below.
 
   help, -h, --help:
     Show this help.
@@ -263,12 +264,12 @@ $@"==================================================
 
   Drag and Drop
   -------------
-  Drag and drop an image file to the executable to add a new Sim using its image.
+  Drag and drop an image to the executable to add a new Sim using its image.
 
   The image format must be JPG, PNG, GIF, EXIF, TIFF, or BMP.
   To preserve an aspect ratio, bear in mind that images are resized to 36x41 pixels automatically.
 
-==================================================");
+================================================================");
 		}
 
 		private static void AddMySim(string[] args)
