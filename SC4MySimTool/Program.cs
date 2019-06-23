@@ -251,6 +251,7 @@ $@"==================================================
 
   remove <index>:
     Remove a specified Sim from the list and delete its image file.
+    Use 'show' command to see indexes.
 
   reorder <source_index> <destination_index>:
     Reorder a specified Sim.
