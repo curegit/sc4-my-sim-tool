@@ -109,7 +109,7 @@ namespace SC4MySimTool
 				if (imageFilepath == null)
 				{
 					Console.WriteLine("Type 'add', 'remove', 'reorder', 'show', or 'help'.");
-					command = Console.ReadLine();
+					command = RemoveMeaninglessSpaces(Console.ReadLine() ?? "");
 				}
 				else
 				{
@@ -339,6 +339,7 @@ $@"================================================================
 
 		private static Gender ParseGender(string gender)
 		{
+			gender = RemoveMeaninglessSpaces(gender);
 			switch (gender)
 			{
 				case "female":
@@ -352,6 +353,7 @@ $@"================================================================
 
 		private static ZodiacSign ParseZodiacSign(string zodiacSign)
 		{
+			zodiacSign = RemoveMeaninglessSpaces(zodiacSign);
 			switch (zodiacSign)
 			{
 				case "aquarius":
@@ -381,6 +383,13 @@ $@"================================================================
 				default:
 					throw new ArgumentException();
 			}
+		}
+
+		private static string RemoveMeaninglessSpaces(string str)
+		{
+			bool isSpace(char c) => c == ' ';
+			var removed = str.ToCharArray().SkipWhile(isSpace).Reverse().SkipWhile(isSpace).Reverse().ToArray();
+			return new string(removed);
 		}
 	}
 }
