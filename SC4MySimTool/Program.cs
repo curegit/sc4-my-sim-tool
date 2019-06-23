@@ -257,8 +257,7 @@ $@"=====================================
 
   The image format must be JPG, PNG, GIF, EXIF, TIFF or BMP.
 
-======================================
-");
+======================================");
 		}
 
 		private static void AddMySim(string[] args)
