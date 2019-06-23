@@ -16,6 +16,8 @@ namespace SC4MySimTool
 					switch (args[0])
 					{
 						case "help":
+						case "-h":
+						case "--help":
 							ShowHelp();
 							break;
 						case "add":
@@ -234,7 +236,7 @@ $@"==================================================
     Add a new Sim to the list using the image.
     Prompt remaining inputs in standard input (interactive mode).
 
-  help:
+  help, -h, --help:
     Show this help.
 
   show [-r, --reorder]:
