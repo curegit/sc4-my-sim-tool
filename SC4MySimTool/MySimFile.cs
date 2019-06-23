@@ -83,7 +83,7 @@ namespace SC4MySimTool
 						}
 						b = b.Skip(filenameLength);
 					}
-					throw new InvalidOperationException("Index is out of range.");
+					throw new InvalidOperationException("The index is out of range.");
 				}
 			}
 			catch (IOException)
@@ -137,11 +137,11 @@ namespace SC4MySimTool
 					}
 					if (sourceHead == 0)
 					{
-						throw new InvalidOperationException("Source index is out of range.");
+						throw new InvalidOperationException("The source index is out of range.");
 					}
 					if (destinationPosition == 0)
 					{
-						throw new InvalidOperationException("Destination index is out of range.");
+						throw new InvalidOperationException("The destination index is out of range.");
 					}
 					var moving = bytes.Skip(sourceHead).Take(sourceLength).ToArray();
 					var deleted = bytes.Take(sourceHead).Concat(bytes.Skip(sourceHead + sourceLength)).ToArray();
@@ -170,7 +170,7 @@ namespace SC4MySimTool
 			}
 			catch (IOException)
 			{
-				throw new IOException("Can't save a image file. Please try again.");
+				throw new IOException("Couldn't save a image file. Please try again.");
 			}
 		}
 

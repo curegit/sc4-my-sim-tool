@@ -113,7 +113,7 @@ namespace SC4MySimTool
 				{
 					case "add":
 						NameEntry:
-						Console.WriteLine("Enter a name of a new Sim.");
+						Console.WriteLine("Enter the name of a new Sim.");
 						var newName = Console.ReadLine();
 						if (newName == "") goto NameEntry;
 						GenderEntry:
@@ -145,7 +145,7 @@ namespace SC4MySimTool
 							Console.WriteLine("The operation was completed successfully.");
 							break;
 						}
-						Console.WriteLine("Enter filepath of a image of the Sim.");
+						Console.WriteLine("Enter the path of a image of the Sim.");
 						var filepath = Console.ReadLine();
 						if (filepath == "") goto ImageFileEntry;
 						AddMySim(new string[] { newName, gender, sign, filepath });
@@ -158,7 +158,7 @@ namespace SC4MySimTool
 						int i;
 						while (true)
 						{
-							Console.WriteLine("Type index number of a Sim you want to remove.");
+							Console.WriteLine("Type an index number of a Sim you want to remove.");
 							var number = Console.ReadLine();
 							if (number != "")
 							{
@@ -177,7 +177,7 @@ namespace SC4MySimTool
 						Console.WriteLine("--------------------------------------------------");
 						int source, destination;
 						SourceEntry:
-						Console.WriteLine("Type index number of a Sim you want to move.");
+						Console.WriteLine("Type an index number of a Sim you want to move.");
 						try
 						{
 							source = int.Parse(Console.ReadLine());
@@ -187,7 +187,7 @@ namespace SC4MySimTool
 							goto SourceEntry;
 						}
 						DestinationEntry:
-						Console.WriteLine("Type destination index number.");
+						Console.WriteLine("Type a destination index number.");
 						try
 						{
 							destination = int.Parse(Console.ReadLine());
