@@ -124,7 +124,7 @@ namespace SC4MySimTool
 						if (newName == null) goto NameEntry;
 						GenderEntry:
 						Console.WriteLine("Enter gender of the Sim. Type 'male' or 'female'.");
-						var gender = Console.ReadLine();
+						var gender = Console.ReadLine() ?? "";
 						try
 						{
 							ParseGender(gender);
@@ -135,7 +135,7 @@ namespace SC4MySimTool
 						}
 						SignEntry:
 						Console.WriteLine("Enter a sign of the Sim. Type 'aquarius', 'aries', 'cancer', 'capricorn', 'gemini', 'leo', 'libra', 'pisces', 'sagittarius', 'scorpio', 'taurus', or 'virgo'.");
-						var sign = Console.ReadLine();
+						var sign = Console.ReadLine() ?? "";
 						try
 						{
 							ParseZodiacSign(sign);
@@ -152,7 +152,7 @@ namespace SC4MySimTool
 							break;
 						}
 						Console.WriteLine("Enter the path of a image of the Sim.");
-						var filepath = Console.ReadLine();
+						var filepath = Console.ReadLine() ?? "";
 						if (filepath == "") goto ImageFileEntry;
 						AddMySim(new string[] { newName, gender, sign, filepath });
 						Console.WriteLine("The operation was completed successfully.");
@@ -168,7 +168,7 @@ namespace SC4MySimTool
 						while (true)
 						{
 							Console.WriteLine("Type an index number of a Sim you want to remove.");
-							var number = Console.ReadLine();
+							var number = Console.ReadLine() ?? "";
 							if (number != "")
 							{
 								if (int.TryParse(number, out i))
@@ -189,7 +189,7 @@ namespace SC4MySimTool
 						Console.WriteLine("Type an index number of a Sim you want to move.");
 						try
 						{
-							source = int.Parse(Console.ReadLine());
+							source = int.Parse(Console.ReadLine() ?? "");
 						}
 						catch
 						{
@@ -199,7 +199,7 @@ namespace SC4MySimTool
 						Console.WriteLine("Type a destination index number.");
 						try
 						{
-							destination = int.Parse(Console.ReadLine());
+							destination = int.Parse(Console.ReadLine() ?? "");
 						}
 						catch
 						{
