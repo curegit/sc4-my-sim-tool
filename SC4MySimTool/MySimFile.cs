@@ -196,7 +196,7 @@ namespace SC4MySimTool
 						stream.Read(filenameBytes, 0, filenameLength);
 						var filenameString = DecodeUTF8(filenameBytes);
 						if (reorder) Console.WriteLine($"  + Destination: [{count}]");
-						Console.WriteLine($"{nameString} ({gender}) : {sign} [{filenameString}.bmp][{count}]");
+						Console.WriteLine($"[{count}] {nameString} ({gender}, {sign}) <{filenameString}.bmp>");
 						count++;
 					}
 					if (count == 0) Console.WriteLine("No Sim.");
