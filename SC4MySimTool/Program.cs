@@ -215,20 +215,20 @@ namespace SC4MySimTool
 		private static void ShowHelp()
 		{
 			Console.WriteLine(
-$@"=====================================
-      SC4 My Sim Tool ({Assembly.GetExecutingAssembly().GetName().Version})
-=====================================
+$@"==================================================
+            SC4 My Sim Tool ({Assembly.GetExecutingAssembly().GetName().Version})
+==================================================
 
   A mod tool for SimCity 4 to add My Sims with custom images
 
   Commands
   --------
   (empty):
-    Prompt inputs in stdin (interactive mode).
+    Prompt inputs in standard input (interactive mode).
 
   <image_path>:
     Add a new Sim to the list using the image.
-    Prompt remaining inputs in stdin (interactive mode).
+    Prompt remaining inputs in standard input (interactive mode).
 
   help:
     Show this help.
@@ -248,16 +248,17 @@ $@"=====================================
 
   reorder <source_index> <destination_index>:
     Reorder a specified Sim.
-    Move him/her to a given index position.
+    Move the Sim to a given index position.
     Use 'show -r' or 'show --reorder' to see indexes.
 
   Drag and Drop
   -------------
-  Drag and drop a image file to the exe to add a new Sim using its image.
+  Drag and drop an image file to the executable to add a new Sim using its image.
 
-  The image format must be JPG, PNG, GIF, EXIF, TIFF or BMP.
+  The image format must be JPG, PNG, GIF, EXIF, TIFF, or BMP.
+  To preserve an aspect ratio, bear in mind that images are resized to 36x41 pixels automatically.
 
-======================================");
+==================================================");
 		}
 
 		private static void AddMySim(string[] args)
