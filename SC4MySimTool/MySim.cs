@@ -86,18 +86,18 @@ namespace SC4MySimTool
 			var sha = new SHA512CryptoServiceProvider();
 			var hash = sha.ComputeHash(Encoding.Unicode.GetBytes(name + DateTime.Now.ToString()));
 			var base64 = Convert.ToBase64String(hash, Base64FormattingOptions.None);
-			var valid = PathValidName(base64);
+			var valid = ValidFileName(base64);
 			return valid.Substring(0, 12);
 		}
 
-		private static string PathValidName(string name)
+		private static string ValidFileName(string name)
 		{
-			var valid = name;
-			foreach (var illegal in Path.GetInvalidPathChars())
+			var str = name;
+			foreach (var illegal in Path.GetInvalidFileNameChars())
 			{
-				valid.Replace(illegal, '-');
+				str = str.Replace(illegal, '-');
 			}
-			return valid;
+			return str;
 		}
 
 		private static byte[] GetUTF8(string str)
