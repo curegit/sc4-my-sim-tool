@@ -80,3 +80,7 @@ Type one of these to input sign.
 - If you remove a Sim from the DAT file, the Sim remains in cities, but the image will be missing.
 
 ![Miku Lives](Screenshots/Living.png)
+
+## License
+
+[The Unlicense](LICENSE)
