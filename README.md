@@ -1,4 +1,4 @@
-# SC4 My Sim Tool
+# SimCity 4 My Sim Tool
 
 A mod tool for SimCity 4 to add your original My Sims with custom images
 
