@@ -158,7 +158,10 @@ namespace SC4MySimTool
 						Console.WriteLine("The operation was completed successfully.");
 						break;
 					case "remove":
+						var defaultColor = Console.ForegroundColor;
+						Console.ForegroundColor = ConsoleColor.Red;
 						var c = ShowMySims();
+						Console.ForegroundColor = defaultColor;
 						if (c == 0) return;
 						Console.WriteLine("--------------------------------------------------");
 						int i;

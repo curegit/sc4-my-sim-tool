@@ -177,6 +177,7 @@ namespace SC4MySimTool
 		public static int Show(bool reorder)
 		{
 			CreateMySimFileIfNotExists();
+			var defaultColor = Console.ForegroundColor;
 			try
 			{
 				using (var stream = new FileStream(MySimFilePath, FileMode.Open, FileAccess.Read))
@@ -195,18 +196,28 @@ namespace SC4MySimTool
 						var filenameBytes = new byte[filenameLength];
 						stream.Read(filenameBytes, 0, filenameLength);
 						var filenameString = DecodeUTF8(filenameBytes);
+						Console.ForegroundColor = ConsoleColor.Green;
 						if (reorder) Console.WriteLine($"  + Destination: [{count}]");
+						Console.ForegroundColor = defaultColor;
 						Console.WriteLine($"[{count}] {nameString} ({gender}, {sign}) <{filenameString}.bmp>");
 						count++;
 					}
 					if (count == 0) Console.WriteLine("No Sim.");
-					else if (reorder) Console.WriteLine($"  + Destination: [{count}]");
+					else if (reorder)
+					{
+						Console.ForegroundColor = ConsoleColor.Green;
+						Console.WriteLine($"  + Destination: [{count}]");
+					}
 					return count;
 				}
 			}
 			catch
 			{
 				throw new IOException("Can't read MySims.dat file.");
+			}
+			finally
+			{
+				Console.ForegroundColor = defaultColor;
 			}
 		}
 
