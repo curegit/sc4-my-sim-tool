@@ -138,7 +138,7 @@ namespace SC4MySimTool
 							goto GenderEntry;
 						}
 						SignEntry:
-						Console.WriteLine("Enter a sign of the Sim. Type 'aquarius', 'aries', 'cancer', 'capricorn', 'gemini', 'leo', 'libra', 'pisces', 'sagittarius', 'scorpio', 'taurus', or 'virgo'.");
+						Console.WriteLine("Enter the zodiac sign of the Sim. Type 'aquarius', 'aries', 'cancer', 'capricorn', 'gemini', 'leo', 'libra', 'pisces', 'sagittarius', 'scorpio', 'taurus', or 'virgo'.");
 						var sign = Console.ReadLine() ?? "";
 						try
 						{
@@ -171,7 +171,7 @@ namespace SC4MySimTool
 						int i;
 						while (true)
 						{
-							Console.WriteLine("Type an index number of a Sim you want to remove.");
+							Console.WriteLine("Type the index number of a Sim you want to remove.");
 							var number = Console.ReadLine() ?? "";
 							if (number != "")
 							{
@@ -190,7 +190,7 @@ namespace SC4MySimTool
 						Console.WriteLine("--------------------------------------------------");
 						int source, destination;
 						SourceEntry:
-						Console.WriteLine("Type an index number of a Sim you want to move.");
+						Console.WriteLine("Type the index number of a Sim you want to move.");
 						try
 						{
 							source = int.Parse(Console.ReadLine() ?? "");
