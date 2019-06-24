@@ -49,7 +49,7 @@ namespace SC4MySimTool
 			return array.ToArray();
 		}
 
-		private static Bitmap ImportImage(string path)
+		public static Bitmap ImportImage(string path)
 		{
 			try
 			{

@@ -32,6 +32,10 @@ namespace SC4MySimTool
 							ReorderMySim(args.Skip(1).ToArray());
 							Console.WriteLine("The operation was completed successfully.");
 							break;
+						case "update-image":
+							UpdateSimsImage(args.Skip(1).ToArray());
+							Console.WriteLine("The operation was completed successfully.");
+							break;
 						case "show":
 							switch (args.Length)
 							{
@@ -108,7 +112,7 @@ namespace SC4MySimTool
 				string command;
 				if (imageFilepath == null)
 				{
-					Console.WriteLine("Type 'add', 'remove', 'reorder', 'show', or 'help'.");
+					Console.WriteLine("Type 'add', 'remove', 'reorder', 'update-image', 'show', or 'help'.");
 					command = RemoveMeaninglessSpaces(Console.ReadLine() ?? "");
 				}
 				else
@@ -208,6 +212,28 @@ namespace SC4MySimTool
 						MySimFile.Reorder(source, destination);
 						Console.WriteLine("The operation was completed successfully.");
 						break;
+					case "update-image":
+						var co = ShowMySims(false);
+						if (co == 0) return;
+						Console.WriteLine("--------------------------------------------------");
+						int index;
+						IndexEntry:
+						Console.WriteLine("Type the index number of a Sim you want to update its image.");
+						try
+						{
+							index = int.Parse(Console.ReadLine() ?? "");
+						}
+						catch
+						{
+							goto IndexEntry;
+						}
+						ImageEntry:
+						Console.WriteLine("Enter the path of a new image of the Sim.");
+						var fp = Console.ReadLine() ?? "";
+						if (fp == "") goto ImageEntry;
+						MySimFile.UpdateImage(index, fp);
+						Console.WriteLine("The operation was completed successfully.");
+						break;
 					case "show":
 						ShowMySims();
 						break;
@@ -261,6 +287,11 @@ $@"================================================================
     Reorder a specified Sim.
     Move the Sim to a given index position.
     Use 'show -r' or 'show --reorder' to see indexes.
+
+  update-image <index> <image_path>:
+    Update the image of an existing Sim.
+    <image_path> is the path of a new image.
+    Use 'show' command to see indexes.
 
   Drag and Drop
   -------------
@@ -329,6 +360,27 @@ $@"================================================================
 			else
 			{
 				throw new ArgumentException("'reorder' command takes 2 arguments.");
+			}
+		}
+
+		private static void UpdateSimsImage(string[] args)
+		{
+			if (args.Length == 2)
+			{
+				int index;
+				try
+				{
+					index = int.Parse(args[0]);
+				}
+				catch
+				{
+					throw new ArgumentException("The index must be an integer.");
+				}
+				MySimFile.UpdateImage(index, args[1]);
+			}
+			else
+			{
+				throw new ArgumentException("'update-image' command takes 2 arguments.");
 			}
 		}
 

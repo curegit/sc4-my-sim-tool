@@ -156,12 +156,52 @@ namespace SC4MySimTool
 			}
 		}
 
-		private static string SaveImage(Bitmap bitmap, string fileName)
+		public static void UpdateImage(int index, string imageFileName)
+		{
+			CreateMySimFileIfNotExists();
+			var bitmap = MySim.ImportImage(imageFileName);
+			string filename = null;
+			try
+			{
+				using (var stream = new FileStream(MySimFilePath, FileMode.Open, FileAccess.Read))
+				{
+					var bytes = new byte[stream.Length];
+					stream.Read(bytes, 0, (int)stream.Length);
+					var b = bytes.Skip(4);
+					for (var i = 0; b.Count() > 0; i++)
+					{
+						var nameLength = (int)b.ElementAt(0);
+						b = b.Skip(1);
+						b = b.Skip(nameLength);
+						b = b.Skip(2);
+						var filenameLength = (int)b.ElementAt(0);
+						b = b.Skip(1);
+						if (i == index)
+						{
+							filename = DecodeUTF8(b.Take(filenameLength).ToArray());
+							break;
+						}
+						b = b.Skip(filenameLength);
+					}
+				}
+			}
+			catch (IOException)
+			{
+				throw new IOException("Can't read MySims.dat file.");
+			}
+			if (filename == null)
+			{
+				throw new InvalidOperationException("The index is out of range.");
+			}
+			SaveImage(bitmap, filename, true);
+		}
+
+		private static string SaveImage(Bitmap bitmap, string fileName, bool canOverwrite = false)
 		{
 			try
 			{
 				var path = Path.Combine(MySimFolderPath, fileName + ".bmp");
-				using (var stream = new FileStream(path, FileMode.CreateNew, FileAccess.Write))
+				using (var stream = new FileStream(path, canOverwrite ? FileMode.Create : FileMode.CreateNew, FileAccess.Write))
 				{
 					bitmap.Save(stream, ImageFormat.Bmp);
 				}
