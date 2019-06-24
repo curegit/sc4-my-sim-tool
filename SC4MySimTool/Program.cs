@@ -280,16 +280,15 @@ $@"================================================================
              libra | pisces | sagittarius | scorpio | taurus | virgo
 
   remove <index>:
-    Remove a specified Sim from the list and delete its image file.
+    Remove the Sim at <index> from the list and delete its image file.
     Use 'show' command to see indexes.
 
   reorder <source_index> <destination_index>:
-    Reorder a specified Sim.
-    Move the Sim to a given index position.
+    Move the Sim at <source_index> to <destination_index>.
     Use 'show -r' or 'show --reorder' to see indexes.
 
   update-image <index> <image_path>:
-    Update the image of an existing Sim.
+    Update the image of the existing Sim at <index>.
     <image_path> is the path of a new image.
     Use 'show' command to see indexes.
 
@@ -298,7 +297,8 @@ $@"================================================================
   Drag and drop an image to the executable to add a new Sim using its image.
 
   The image format must be JPG, PNG, GIF, EXIF, TIFF, or BMP.
-  To preserve an aspect ratio, bear in mind that images are resized to 36x41 pixels automatically.
+  To preserve an aspect ratio, bear in mind
+  that images are resized to 36x41 pixels automatically.
 
 ================================================================");
 		}
