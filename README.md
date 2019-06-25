@@ -10,7 +10,7 @@ A mod tool for SimCity 4 to add your original My Sims with custom images
 - Edit My Sim list by removal and reordering
 - Update images of existing My Sims
 
-![My Sim View](Screenshots/MySims.png)
+![My Sims](Screenshots/MySims.png)
 
 ## Requirements
 
@@ -97,7 +97,9 @@ To preserve an aspect ratio, bear in mind that images are resized to 36x41 pixel
 
 ## Gallery
 
-![Miku Lives](Screenshots/Living.png)
+![Miku](Screenshots/Miku.png)
+
+![Aoi](Screenshots/Aoi.png)
 
 ## License
 
