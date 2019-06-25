@@ -6,9 +6,9 @@ A mod tool for SimCity 4 to add your original My Sims with custom images
 
 ## Features
 
--
--
--
+- Make My Sims with custom images
+- Edit My Sim list by removal and reordering
+- Update images of existing My Sims
 
 ![My Sim View](Screenshots/MySims.png)
 
@@ -20,7 +20,8 @@ A mod tool for SimCity 4 to add your original My Sims with custom images
 
 ## Installation
 
-There is no need 
+Not needed.
+Just run the executable.
 
 ## Usage
 
