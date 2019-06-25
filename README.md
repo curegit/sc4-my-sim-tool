@@ -25,8 +25,6 @@ Just run the executable.
 
 ## Usage
 
-
-
 ### Commands
 
 `help, -h, --help`  
