@@ -97,15 +97,15 @@ To preserve an aspect ratio, bear in mind that images are resized to 36x41 pixel
 
 ## Gallery
 
-![Miku](Screenshots/Miku.png)
+![Miku Home](Screenshots/Miku.png)
 
-![Aoi](Screenshots/Kotonoha.png)
+![Kotonoha Car](Screenshots/Kotonoha.png)
 
-![Aoi](Screenshots/Aoi.png)
+![Aoi Home](Screenshots/Aoi.png)
 
-![Aoi](Screenshots/Ichigo.png)
+![Ichigo Home](Screenshots/Ichigo.png)
 
-![Aoi](Screenshots/Tux.png)
+![Tux Status](Screenshots/Tux.png)
 
 ## License
 
