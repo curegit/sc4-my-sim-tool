@@ -10,7 +10,7 @@ A mod tool for SimCity 4 to add your original My Sims with custom images
 - Edit My Sim list by removal and reordering
 - Update images of existing My Sims
 
-![My Sims](Screenshots/MySims.png)
+![My Sims](MySims.png)
 
 ## Requirements
 
@@ -94,18 +94,6 @@ To preserve an aspect ratio, bear in mind that images are resized to 36x41 pixel
 - Data and images are saved in `{MyDocuments}/SimCity 4/MySim`.
 - Information of Sims except the images is copied into each save of cities where the Sim lives.
 - If you remove a Sim from the list, the Sim remains in cities, but the image will be missing.
-
-## Gallery
-
-![Miku Home](Screenshots/Miku.png)
-
-![Kotonoha Car](Screenshots/Kotonoha.png)
-
-![Aoi Home](Screenshots/Aoi.png)
-
-![Ichigo Home](Screenshots/Ichigo.png)
-
-![Tux Status](Screenshots/Tux.png)
 
 ## License
 
