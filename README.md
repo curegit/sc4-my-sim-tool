@@ -4,19 +4,27 @@ A mod tool for SimCity 4 to add your original My Sims with custom images
 
 [Download the latest version](https://github.com/curegit/sc4-my-sim-tool/releases/)
 
+## Features
+
+-
+-
+-
+
 ![My Sim View](Screenshots/MySims.png)
 
 ## Requirements
 
 - Windows
-- .NET Framework 4.0+
+- .NET Framework >= 4.0
 - SimCity 4 Rush Hour/Deluxe
 
 ## Installation
 
-
+There is no need 
 
 ## Usage
+
+
 
 ### Commands
 
@@ -76,6 +84,11 @@ Type one of these to input sign.
 - scorpio
 - taurus
 - virgo
+
+### Image Format
+
+The image format must be JPG, PNG, GIF, EXIF, TIFF, or BMP.
+To preserve an aspect ratio, bear in mind that images are resized to 36x41 pixels automatically.
 
 ## Notes
 
