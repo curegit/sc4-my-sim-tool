@@ -73,8 +73,8 @@ namespace SC4MySimTool
 							{
 								Console.Error.WriteLine($"'{args[0]}' is not a valid command.");
 								ShowHelp();
+								return -1;
 							}
-							break;
 					}
 					return 0;
 				}
