@@ -122,7 +122,7 @@ namespace SC4MySimTool
 				switch (command)
 				{
 					case "add":
-						NameEntry:
+					NameEntry:
 						Console.WriteLine("Enter the name of a new Sim.");
 						var newName = Console.ReadLine();
 						if (newName == null) goto NameEntry;
@@ -137,7 +137,7 @@ namespace SC4MySimTool
 						{
 							goto GenderEntry;
 						}
-						SignEntry:
+					SignEntry:
 						Console.WriteLine("Enter the zodiac sign of the Sim. Type 'aquarius', 'aries', 'cancer', 'capricorn', 'gemini', 'leo', 'libra', 'pisces', 'sagittarius', 'scorpio', 'taurus', or 'virgo'.");
 						var sign = Console.ReadLine() ?? "";
 						try
@@ -148,7 +148,7 @@ namespace SC4MySimTool
 						{
 							goto SignEntry;
 						}
-						ImageFileEntry:
+					ImageFileEntry:
 						if (imageFilepath != null)
 						{
 							AddMySim(new string[] { newName, gender, sign, imageFilepath });
@@ -189,7 +189,7 @@ namespace SC4MySimTool
 						if (count == 0) return;
 						Console.WriteLine("--------------------------------------------------");
 						int source, destination;
-						SourceEntry:
+					SourceEntry:
 						Console.WriteLine("Type the index number of a Sim you want to move.");
 						try
 						{
@@ -199,7 +199,7 @@ namespace SC4MySimTool
 						{
 							goto SourceEntry;
 						}
-						DestinationEntry:
+					DestinationEntry:
 						Console.WriteLine("Type a destination index number.");
 						try
 						{
@@ -217,7 +217,7 @@ namespace SC4MySimTool
 						if (co == 0) return;
 						Console.WriteLine("--------------------------------------------------");
 						int index;
-						IndexEntry:
+					IndexEntry:
 						Console.WriteLine("Type the index number of a Sim you want to update its image.");
 						try
 						{
@@ -227,7 +227,7 @@ namespace SC4MySimTool
 						{
 							goto IndexEntry;
 						}
-						ImageEntry:
+					ImageEntry:
 						Console.WriteLine("Enter the path of a new image of the Sim.");
 						var fp = Console.ReadLine() ?? "";
 						if (fp == "") goto ImageEntry;
