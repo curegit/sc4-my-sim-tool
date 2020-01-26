@@ -55,7 +55,7 @@ namespace SC4MySimTool
 							{
 								try
 								{
-									ReadFromStandardIO(args[0]);
+									ReadFromStandardInput(args[0]);
 									Console.WriteLine("Press any key to quit.");
 									Console.ReadKey();
 									return 0;
@@ -89,7 +89,7 @@ namespace SC4MySimTool
 			{
 				try
 				{
-					ReadFromStandardIO();
+					ReadFromStandardInput();
 					Console.WriteLine("Press any key to quit.");
 					Console.ReadKey();
 					return 0;
@@ -105,7 +105,7 @@ namespace SC4MySimTool
 			}
 		}
 
-		private static void ReadFromStandardIO(string imageFilepath = null)
+		private static void ReadFromStandardInput(string imageFilepath = null)
 		{
 			while (true)
 			{
