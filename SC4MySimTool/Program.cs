@@ -62,8 +62,8 @@ namespace SC4MySimTool
 								}
 								catch (Exception e)
 								{
-									Console.Write("An error occurred: ");
-									Console.WriteLine(e.Message);
+									Console.Error.Write("An error occurred: ");
+									Console.Error.WriteLine(e.Message);
 									Console.WriteLine("Press any key to quit.");
 									Console.ReadKey();
 									return -1;
@@ -71,7 +71,7 @@ namespace SC4MySimTool
 							}
 							else
 							{
-								Console.WriteLine($"'{args[0]}' is not a valid command.");
+								Console.Error.WriteLine($"'{args[0]}' is not a valid command.");
 								ShowHelp();
 							}
 							break;
@@ -80,8 +80,8 @@ namespace SC4MySimTool
 				}
 				catch (Exception e)
 				{
-					Console.Write("An error occurred: ");
-					Console.WriteLine(e.Message);
+					Console.Error.Write("An error occurred: ");
+					Console.Error.WriteLine(e.Message);
 					return -1;
 				}
 			}
@@ -96,8 +96,8 @@ namespace SC4MySimTool
 				}
 				catch (Exception e)
 				{
-					Console.Write("An error occurred: ");
-					Console.WriteLine(e.Message);
+					Console.Error.Write("An error occurred: ");
+					Console.Error.WriteLine(e.Message);
 					Console.WriteLine("Press any key to quit.");
 					Console.ReadKey();
 					return -1;
