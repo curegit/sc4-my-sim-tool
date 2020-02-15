@@ -28,7 +28,7 @@ Just run the executable.
 ### Commands
 
 `help, -h, --help`  
-Show the help.
+Show help.
 
 `show [-r, --reorder]`  
 Show the My Sim list.  
@@ -54,7 +54,7 @@ Use 'show' command to see indexes.
 
 ### Interactive Mode
 
-If you execute the application with no command line arguments, it prompts inputs in standard input.
+If you execute the application with no command-line arguments, it prompts inputs in standard input.
 
 ### Drag and Drop
 
@@ -92,7 +92,7 @@ To preserve an aspect ratio, bear in mind that images are resized to 36x41 pixel
 ## Notes
 
 - Data and images are saved in `{MyDocuments}/SimCity 4/MySim`.
-- Information of Sims except the images is copied into each save of cities where the Sim lives.
+- Information of Sims except the images is copied into each saves of cities where the Sim lives.
 - If you remove a Sim from the list, the Sim remains in cities, but the image will be missing.
 
 ## License
