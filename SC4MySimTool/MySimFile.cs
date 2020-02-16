@@ -210,7 +210,7 @@ namespace SC4MySimTool
 			}
 			catch (IOException)
 			{
-				throw new IOException("Couldn't save a image file. Please try again.");
+				throw new IOException("Couldn't save an image file. Please try again.");
 			}
 		}
 

@@ -127,7 +127,7 @@ namespace SC4MySimTool
 						var newName = Console.ReadLine();
 						if (newName == null) goto NameEntry;
 						GenderEntry:
-						Console.WriteLine("Enter gender of the Sim. Type 'male' or 'female'.");
+						Console.WriteLine("Enter the gender of the Sim. Type 'male' or 'female'.");
 						var gender = Console.ReadLine() ?? "";
 						try
 						{
@@ -264,7 +264,7 @@ $@"================================================================
   <image_path>:
     Add a new Sim to the list using the image.
     Prompt remaining inputs in standard input (interactive mode).
-    This is same as drag and drop. See the description below.
+    This is the same as drag and drop. See the description below.
 
   help, -h, --help:
     Show this help.
@@ -331,7 +331,7 @@ $@"================================================================
 				}
 				catch
 				{
-					throw new ArgumentException("'remove' command takes a integer.");
+					throw new ArgumentException("'remove' command takes an integer.");
 				}
 				MySimFile.Remove(i);
 			}
