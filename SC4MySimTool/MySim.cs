@@ -102,8 +102,7 @@ namespace SC4MySimTool
 
 		private static byte[] GetUTF8(string str)
 		{
-			byte[] unicode = Encoding.Unicode.GetBytes(str);
-			return Encoding.Convert(Encoding.Unicode, Encoding.UTF8, unicode);
+			return Encoding.UTF8.GetBytes(str);
 		}
 	}
 }
