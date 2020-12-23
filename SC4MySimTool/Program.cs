@@ -56,16 +56,22 @@ namespace SC4MySimTool
 								try
 								{
 									ReadFromStandardInput(args[0]);
-									Console.WriteLine("Press any key to quit.");
-									Console.ReadKey();
+									if (!Console.IsInputRedirected)
+									{
+										Console.WriteLine("Press any key to quit.");
+										Console.ReadKey();
+									}
 									return 0;
 								}
 								catch (Exception e)
 								{
 									Console.Error.Write("An error occurred: ");
 									Console.Error.WriteLine(e.Message);
-									Console.WriteLine("Press any key to quit.");
-									Console.ReadKey();
+									if (!Console.IsInputRedirected)
+									{
+										Console.WriteLine("Press any key to quit.");
+										Console.ReadKey();
+									}
 									return -1;
 								}
 							}
@@ -90,16 +96,22 @@ namespace SC4MySimTool
 				try
 				{
 					ReadFromStandardInput();
-					Console.WriteLine("Press any key to quit.");
-					Console.ReadKey();
+					if (!Console.IsInputRedirected)
+					{
+						Console.WriteLine("Press any key to quit.");
+						Console.ReadKey();
+					}
 					return 0;
 				}
 				catch (Exception e)
 				{
 					Console.Error.Write("An error occurred: ");
 					Console.Error.WriteLine(e.Message);
-					Console.WriteLine("Press any key to quit.");
-					Console.ReadKey();
+					if (!Console.IsInputRedirected)
+					{
+						Console.WriteLine("Press any key to quit.");
+						Console.ReadKey();
+					}
 					return -1;
 				}
 			}
