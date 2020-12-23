@@ -15,7 +15,7 @@ A mod tool for SimCity 4 to add your original My Sims with custom images
 ## Requirements
 
 - Windows
-- .NET Framework >= 4.0
+- .NET Framework >= 4.5
 - SimCity 4 Rush Hour/Deluxe
 
 ## Installation
