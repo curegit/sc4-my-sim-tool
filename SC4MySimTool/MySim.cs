@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Drawing.Drawing2D;
 using System.Security.Cryptography;
 
@@ -55,11 +56,21 @@ namespace SC4MySimTool
 			{
 				using (var source = new Bitmap(path))
 				{
-					var destination = new Bitmap(36, 41);
-					var graphics = Graphics.FromImage(destination);
-					graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
-					graphics.DrawImage(source, 0, 0, 36, 41);
-					graphics.Dispose();
+					var destination = new Bitmap(36, 41, PixelFormat.Format32bppArgb);
+					using (var graphics = Graphics.FromImage(destination))
+					{
+						graphics.Clear(Color.White);
+						graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+						graphics.DrawImage(source, 0, 0, 36, 41);
+					}
+					for (var i = 0; i < destination.Width; i++)
+					{
+						for (var j = 0; j < destination.Height; j++)
+						{
+							var color = destination.GetPixel(i, j);
+							destination.SetPixel(i, j, color == Color.Magenta ? Color.FromArgb(254, 254, 0) : color);
+						}
+					}
 					destination.SetPixel(0, 0, Color.Magenta);
 					destination.SetPixel(1, 0, Color.Magenta);
 					destination.SetPixel(0, 1, Color.Magenta);
