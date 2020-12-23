@@ -126,7 +126,7 @@ namespace SC4MySimTool
 						Console.WriteLine("Enter the name of a new Sim.");
 						var newName = Console.ReadLine();
 						if (newName == null) goto NameEntry;
-						GenderEntry:
+					GenderEntry:
 						Console.WriteLine("Enter the gender of the Sim. Type 'male' or 'female'.");
 						var gender = Console.ReadLine() ?? "";
 						try
