@@ -2,7 +2,7 @@
 
 A mod tool for SimCity 4 to add your original My Sims with custom images
 
-[Download the latest version](https://github.com/curegit/sc4-my-sim-tool/releases/)
+[Download the latest version](https://github.com/curegit/sc4-my-sim-tool/releases/latest)
 
 ## Features
 
