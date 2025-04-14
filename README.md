@@ -2,7 +2,7 @@
 
 A mod tool for SimCity 4 to add your original My Sims with custom images
 
-[Download the latest version](https://github.com/curegit/sc4-my-sim-tool/releases/)
+[Download the latest version](https://github.com/curegit/sc4-my-sim-tool/releases/latest)
 
 ## Features
 
@@ -16,7 +16,7 @@ A mod tool for SimCity 4 to add your original My Sims with custom images
 
 - Windows
 - .NET Framework >= 4.5
-- SimCity 4 Rush Hour/Deluxe
+- SimCity 4 Rush Hour/Deluxe (Tested with version 1.1.640 and 1.1.641)
 
 ## Installation
 
