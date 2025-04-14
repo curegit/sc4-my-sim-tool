@@ -92,8 +92,8 @@ To preserve an aspect ratio, bear in mind that images are resized to 36x41 pixel
 ## Notes
 
 - Data and images are saved in `{MyDocuments}/SimCity 4/MySim`.
-- Information of Sims except the images is copied into each saves of cities where the Sim lives.
-- If you remove a Sim from the list, the Sim remains in cities, but the image will be missing.
+- Information of Sims except images is copied into each saves of cities where the Sim lives.
+- If you remove a Sim from the list, the in-game Sim remains in the cities, but their image will be missing.
 
 ## License
 
