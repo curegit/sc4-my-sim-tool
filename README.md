@@ -37,6 +37,7 @@ Show indexes used for reordering when '-r' or '--reorder' is given.
 `add <name> <gender> <sign> <image_path>`  
 Add a new Sim to the list.  
 The path of an image is absolute or relative.  
+Pass 'clipboard:' or 'cb:' as path to import from clipboard.  
 The image format must be JPG, PNG, GIF, EXIF, TIFF, or BMP.
 
 `remove <index>`  
@@ -50,11 +51,12 @@ Use 'show -r' to see indexes.
 `update-image <index> <image_path>`  
 Update the image of a specified existing Sim.  
 Pass the path of a new image for the Sim.  
+Pass 'clipboard:' or 'cb:' as path to import from clipboard.  
 Use 'show' command to see indexes.
 
 ### Interactive Mode
 
-If you execute the application with no command-line arguments, it prompts inputs in standard input.
+If you execute the application with no command-line arguments, it prompts inputs in standard input interactively.
 
 ### Drag and Drop
 
