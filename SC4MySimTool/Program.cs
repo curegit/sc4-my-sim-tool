@@ -7,6 +7,7 @@ namespace SC4MySimTool
 {
 	public class Program
 	{
+		[STAThread]
 		private static int Main(string[] args)
 		{
 			if (args.Length > 0)
@@ -167,7 +168,7 @@ namespace SC4MySimTool
 							Console.WriteLine("The operation was completed successfully.");
 							break;
 						}
-						Console.WriteLine("Enter the path of a image of the Sim.");
+						Console.WriteLine("Enter the path of a image of the Sim. Type 'clipboard:' or 'cb:' to read image from clipboard.");
 						var filepath = Console.ReadLine() ?? "";
 						if (filepath == "") goto ImageFileEntry;
 						AddMySim(new string[] { newName, gender, sign, filepath });
@@ -240,7 +241,7 @@ namespace SC4MySimTool
 							goto IndexEntry;
 						}
 					ImageEntry:
-						Console.WriteLine("Enter the path of a new image of the Sim.");
+						Console.WriteLine("Enter the path of a new image of the Sim. Type 'clipboard:' or 'cb:' to read image from clipboard.");
 						var fp = Console.ReadLine() ?? "";
 						if (fp == "") goto ImageEntry;
 						MySimFile.UpdateImage(index, fp);

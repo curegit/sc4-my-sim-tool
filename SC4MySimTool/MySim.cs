@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Drawing.Drawing2D;
 using System.Security.Cryptography;
+using System.Windows.Forms;
 
 namespace SC4MySimTool
 {
@@ -52,9 +53,38 @@ namespace SC4MySimTool
 
 		public static Bitmap ImportImage(string path)
 		{
+			Bitmap source = null;
+			if (path == "clipboard:" || path == "cb:")
+			{
+				var msPng = Clipboard.GetData("PNG") as MemoryStream;
+				if (msPng != null)
+				{
+					try
+					{
+						msPng.Seek(0, SeekOrigin.Begin);
+						source = new Bitmap(msPng);
+					}
+					catch { } finally
+					{
+						msPng.Dispose();
+					}
+				}
+				if (source == null)
+				{
+					if (Clipboard.ContainsImage())
+					{
+						source = new Bitmap(Clipboard.GetImage());
+					}
+					else
+					{
+						throw new IOException("Can't import image from clipboard.");
+					}
+				}
+			}
 			try
 			{
-				using (var source = new Bitmap(path))
+				source = source ?? new Bitmap(path);
+				using (source)
 				{
 					var destination = new Bitmap(36, 41, PixelFormat.Format32bppArgb);
 					using (var graphics = Graphics.FromImage(destination))
