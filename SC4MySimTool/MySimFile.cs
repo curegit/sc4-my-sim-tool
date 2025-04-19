@@ -11,7 +11,9 @@ namespace SC4MySimTool
 	{
 		private static readonly byte[] FileType = { 0xAA, 0xE4, 0x32, 0x4A };
 
-		private static readonly string MySimFolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "SimCity 4", "MySim");
+		private static readonly string MyDocumentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) == "" ? throw new DirectoryNotFoundException("MyDocuments not found.") : Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+		private static readonly string MySimFolderPath = Path.Combine(MyDocumentsPath, "SimCity 4", "MySim");
 
 		private static readonly string MySimFilePath = Path.Combine(MySimFolderPath, "MySims.dat");
 
