@@ -90,6 +90,7 @@ namespace SC4MySimTool
 					using (var graphics = Graphics.FromImage(destination))
 					{
 						graphics.Clear(Color.White);
+						graphics.CompositingQuality = CompositingQuality.HighQuality;
 						graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
 						graphics.DrawImage(source, 0, 0, 36, 41);
 					}
