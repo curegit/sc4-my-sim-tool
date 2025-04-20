@@ -25,6 +25,8 @@ Just run the executable.
 
 ## Usage
 
+`SC4MySimTool.exe [COMMAND [ARGS]]`
+
 ### Commands
 
 `help, -h, --help`  
