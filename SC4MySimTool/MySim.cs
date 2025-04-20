@@ -62,7 +62,7 @@ namespace SC4MySimTool
 					try
 					{
 						msPng.Seek(0, SeekOrigin.Begin);
-						source = new Bitmap(msPng);
+						source = new Bitmap(msPng, useIcm: true);
 					}
 					catch { } finally
 					{
@@ -83,7 +83,7 @@ namespace SC4MySimTool
 			}
 			try
 			{
-				source = source ?? new Bitmap(path);
+				source = source ?? new Bitmap(path, useIcm: true);
 				using (source)
 				{
 					var destination = new Bitmap(36, 41, PixelFormat.Format32bppArgb);
