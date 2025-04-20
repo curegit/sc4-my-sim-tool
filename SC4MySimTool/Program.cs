@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Linq;
+using System.Drawing;
 using System.Reflection;
 
 namespace SC4MySimTool
@@ -52,7 +53,7 @@ namespace SC4MySimTool
 							}
 							break;
 						default:
-							if (File.Exists(args[0]))
+							if (File.Exists(args[0]) || args[0] == "cb:" || args[0] == "clipboard:")
 							{
 								try
 								{
@@ -123,6 +124,7 @@ namespace SC4MySimTool
 			while (true)
 			{
 				string command;
+				Bitmap preloadedImage = null;
 				if (imageFilepath == null)
 				{
 					Console.WriteLine("Type 'add', 'remove', 'reorder', 'update-image', 'show', or 'help'.");
@@ -131,6 +133,10 @@ namespace SC4MySimTool
 				else
 				{
 					command = "add";
+					if (imageFilepath == "clipboard:" || imageFilepath == "cb:")
+					{
+						preloadedImage = MySim.ImportImageFromClipboard();
+					}
 				}
 				switch (command)
 				{
@@ -164,7 +170,7 @@ namespace SC4MySimTool
 					ImageFileEntry:
 						if (imageFilepath != null)
 						{
-							AddMySim(new string[] { newName, gender, sign, imageFilepath });
+							AddMySim(new string[] { newName, gender, sign, imageFilepath }, preloadedImage: preloadedImage);
 							Console.WriteLine("The operation was completed successfully.");
 							break;
 						}
@@ -316,7 +322,7 @@ $@"================================================================
 ================================================================");
 		}
 
-		private static void AddMySim(string[] args)
+		private static void AddMySim(string[] args, Bitmap preloadedImage = null)
 		{
 			if (args.Length == 4)
 			{
@@ -324,7 +330,7 @@ $@"================================================================
 				var gender = ParseGender(args[1]);
 				var zodiacSign = ParseZodiacSign(args[2]);
 				var path = args[3];
-				var sim = new MySim(name, gender, zodiacSign, path);
+				var sim = preloadedImage == null ? new MySim(name, gender, zodiacSign, path) : new MySim(name, gender, zodiacSign, preloadedImage);
 				MySimFile.Add(sim);
 			}
 			else

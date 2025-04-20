@@ -31,6 +31,15 @@ namespace SC4MySimTool
 			ImageFileName = GenerateUniqueFileName(Name);
 		}
 
+		public MySim(string name, Gender gender, ZodiacSign zodiacSign, Bitmap image)
+		{
+			Name = name ?? throw new ArgumentNullException("'name' is required.");
+			Gender = gender;
+			ZodiacSign = zodiacSign;
+			Bitmap = ImportImage(image);
+			ImageFileName = GenerateUniqueFileName(Name);
+		}
+
 		public byte[] Encode()
 		{
 			var nameBytes = GetUTF8(Name);
@@ -51,76 +60,93 @@ namespace SC4MySimTool
 			return array.ToArray();
 		}
 
-		public static Bitmap ImportImage(string path)
+		public static Bitmap ImportImage(Bitmap image)
 		{
-			Bitmap source = null;
-			if (path == "clipboard:" || path == "cb:")
-			{
-				var msPng = Clipboard.GetData("PNG") as MemoryStream;
-				if (msPng != null)
-				{
-					try
-					{
-						msPng.Seek(0, SeekOrigin.Begin);
-						source = new Bitmap(msPng, useIcm: true);
-					}
-					catch { } finally
-					{
-						msPng.Dispose();
-					}
-				}
-				if (source == null)
-				{
-					if (Clipboard.ContainsImage())
-					{
-						source = new Bitmap(Clipboard.GetImage());
-					}
-					else
-					{
-						throw new IOException("Can't import image from clipboard.");
-					}
-				}
-			}
 			try
 			{
-				source = source ?? new Bitmap(path, useIcm: true);
-				using (source)
+				var destination = new Bitmap(36, 41, PixelFormat.Format32bppArgb);
+				using (var graphics = Graphics.FromImage(destination))
 				{
-					var destination = new Bitmap(36, 41, PixelFormat.Format32bppArgb);
-					using (var graphics = Graphics.FromImage(destination))
-					{
-						graphics.Clear(Color.White);
-						graphics.CompositingQuality = CompositingQuality.HighQuality;
-						graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
-						graphics.DrawImage(source, 0, 0, 36, 41);
-					}
-					for (var i = 0; i < destination.Width; i++)
-					{
-						for (var j = 0; j < destination.Height; j++)
-						{
-							var color = destination.GetPixel(i, j);
-							destination.SetPixel(i, j, color == Color.Magenta ? Color.FromArgb(254, 254, 0) : color);
-						}
-					}
-					destination.SetPixel(0, 0, Color.Magenta);
-					destination.SetPixel(1, 0, Color.Magenta);
-					destination.SetPixel(0, 1, Color.Magenta);
-					destination.SetPixel(34, 0, Color.Magenta);
-					destination.SetPixel(35, 0, Color.Magenta);
-					destination.SetPixel(35, 1, Color.Magenta);
-					destination.SetPixel(0, 39, Color.Magenta);
-					destination.SetPixel(0, 40, Color.Magenta);
-					destination.SetPixel(1, 40, Color.Magenta);
-					destination.SetPixel(34, 40, Color.Magenta);
-					destination.SetPixel(35, 39, Color.Magenta);
-					destination.SetPixel(35, 40, Color.Magenta);
-					return destination;
+					graphics.Clear(Color.White);
+					graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
+					graphics.CompositingQuality = CompositingQuality.HighQuality;
+					graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+					graphics.DrawImage(image, 0, 0, 36, 41);
 				}
+				for (var i = 0; i < destination.Width; i++)
+				{
+					for (var j = 0; j < destination.Height; j++)
+					{
+						var color = destination.GetPixel(i, j);
+						destination.SetPixel(i, j, color == Color.Magenta ? Color.FromArgb(254, 254, 0) : color);
+					}
+				}
+				destination.SetPixel(0, 0, Color.Magenta);
+				destination.SetPixel(1, 0, Color.Magenta);
+				destination.SetPixel(0, 1, Color.Magenta);
+				destination.SetPixel(34, 0, Color.Magenta);
+				destination.SetPixel(35, 0, Color.Magenta);
+				destination.SetPixel(35, 1, Color.Magenta);
+				destination.SetPixel(0, 39, Color.Magenta);
+				destination.SetPixel(0, 40, Color.Magenta);
+				destination.SetPixel(1, 40, Color.Magenta);
+				destination.SetPixel(34, 40, Color.Magenta);
+				destination.SetPixel(35, 39, Color.Magenta);
+				destination.SetPixel(35, 40, Color.Magenta);
+				return destination;
 			}
 			catch
 			{
 				throw new IOException("Can't import the image.");
 			}
+		}
+
+		public static Bitmap ImportImage(string path)
+		{
+			Bitmap source = null;
+			if (path == "clipboard:" || path == "cb:")
+			{
+				source = ImportImageFromClipboard();
+			}
+			try
+			{
+				source = source ?? new Bitmap(path, useIcm: true);
+			}
+			catch
+			{
+				throw new IOException("Can't import the image.");
+			}
+			using (source)
+			{
+				return ImportImage(source);
+			}
+		}
+
+		public static Bitmap ImportImageFromClipboard()
+		{
+			var msPng = Clipboard.GetData("PNG") as MemoryStream;
+			if (msPng != null)
+			{
+				try
+				{
+					msPng.Seek(0, SeekOrigin.Begin);
+					return new Bitmap(msPng, useIcm: true);
+				}
+				catch { }
+				finally
+				{
+					msPng.Dispose();
+				}
+			}
+			if (Clipboard.ContainsImage())
+			{
+				try
+				{
+					return new Bitmap(Clipboard.GetImage());
+				}
+				catch { }
+			}
+			throw new IOException("Can't import image from clipboard.");
 		}
 
 		private static string GenerateUniqueFileName(string name)
