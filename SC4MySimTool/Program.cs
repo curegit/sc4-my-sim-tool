@@ -319,6 +319,8 @@ $@"================================================================
   To preserve an aspect ratio, bear in mind
   that images are resized to 36x41 pixels automatically.
 
+  Input 'clipboard:' or 'cb:' as <image_path> to import image from clipboard.
+
 ================================================================");
 		}
 
